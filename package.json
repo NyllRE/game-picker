@@ -1,0 +1,30 @@
+{
+	"private": true,
+	"name": "nuxt-ionic-playground",
+	"scripts": {
+		"dev": "nuxi dev",
+		"build": "nuxi generate",
+		"ionic:build": "yarn build",
+		"ionic:serve": "yarn dev"
+	},
+	"devDependencies": {
+		"@nuxt/types": "^2.15.8",
+		"@nuxt/typescript-build": "^2.1.0",
+		"@nuxtjs/ionic": "latest",
+		"nuxt": "^3.0.0-rc.12"
+	},
+	"dependencies": {
+		"@capacitor/android": "4.6.1",
+		"@capacitor/app": "4.1.1",
+		"@capacitor/camera": "4.1.4",
+		"@capacitor/cli": "4.6.1",
+		"@capacitor/core": "4.6.1",
+		"@capacitor/filesystem": "4.1.4",
+		"@capacitor/haptics": "4.1.0",
+		"@capacitor/keyboard": "4.1.0",
+		"@capacitor/status-bar": "4.1.1",
+		"@capacitor/storage": "^1.2.5",
+		"@ionic/vue": "^6.4.2",
+		"pug": "^3.0.2"
+	}
+}

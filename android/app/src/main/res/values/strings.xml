@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">nuxt-ionic-playground</string>
+    <string name="title_activity_main">nuxt-ionic-playground</string>
+    <string name="package_name">nuxt.ionic.playground</string>
+    <string name="custom_url_scheme">nuxt.ionic.playground</string>
+</resources>
