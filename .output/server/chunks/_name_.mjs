@@ -1,18 +1,4 @@
-import { d as defineEventHandler } from './nitro/node-server.mjs';
-import 'node-fetch-native/polyfill';
-import 'http';
-import 'https';
-import 'destr';
-import 'ufo';
-import 'ofetch';
-import 'unenv/runtime/fetch/index';
-import 'hookable';
-import 'scule';
-import 'ohash';
-import 'unstorage';
-import 'node:fs';
-import 'node:url';
-import 'pathe';
+import { defineEventHandler } from 'h3';
 
 const _name_ = defineEventHandler((event) => {
   return `Hello, ${event.context.params.name}!`;

@@ -6,10 +6,10 @@ type Decorate<T extends Record<string, any>> = { [K in keyof T as K extends stri
 type InjectionType<A extends Plugin> = A extends Plugin<infer T> ? Decorate<T> : unknown
 
 type NuxtAppInjections = 
-  InjectionType<typeof import("../../node_modules/.pnpm/@nuxtjs+ionic@0.8.0/node_modules/@nuxtjs/ionic/dist/runtime/router").default> &
+  InjectionType<typeof import("../../node_modules/@nuxtjs/ionic/dist/runtime/router").default> &
   InjectionType<typeof import("../components.plugin").default> &
-  InjectionType<typeof import("../../node_modules/.pnpm/nuxt@3.0.0/node_modules/nuxt/dist/head/runtime/lib/vueuse-head.plugin").default> &
-  InjectionType<typeof import("../../node_modules/.pnpm/@nuxtjs+ionic@0.8.0/node_modules/@nuxtjs/ionic/dist/runtime/ionic").default>
+  InjectionType<typeof import("../../node_modules/nuxt/dist/head/runtime/lib/vueuse-head.plugin").default> &
+  InjectionType<typeof import("../../node_modules/@nuxtjs/ionic/dist/runtime/ionic").default>
 
 declare module '#app' {
   interface NuxtApp extends NuxtAppInjections { }

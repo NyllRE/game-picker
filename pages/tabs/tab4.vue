@@ -21,7 +21,7 @@ const data = ref('fetchin');
 onMounted(async () => {
 	console.log(squareRef.value, animation);
 	animation.play();
-	data.value = await $fetch('http://192.168.1.103:3000/api/count')
+	data.value = await $fetch('http://localhost:3000/api/count')
 		.then((res) => res.api)
 		.catch((e) => 'error: ' + e);
 });
