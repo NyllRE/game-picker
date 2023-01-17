@@ -4,6 +4,8 @@
 	"scripts": {
 		"dev": "nuxi dev",
 		"build": "nuxi generate",
+		"server": "nuxi build",
+		"start": "node .output/server/index.mjs",
 		"ionic:build": "yarn build",
 		"ionic:serve": "yarn dev"
 	},
@@ -11,7 +13,8 @@
 		"@nuxt/types": "^2.15.8",
 		"@nuxt/typescript-build": "^2.1.0",
 		"@nuxtjs/ionic": "latest",
-		"nuxt": "^3.0.0-rc.12"
+		"nuxt": "^3.0.0",
+		"nuxi": "^3.0.0"
 	},
 	"dependencies": {
 		"@capacitor/android": "4.6.1",

@@ -1,0 +1,33 @@
+{
+  "name": "nitro-output",
+  "version": "0.0.0",
+  "private": true,
+  "bundledDependencies": [
+    "source-map-support",
+    "node-fetch-native",
+    "unstorage",
+    "pathe",
+    "ufo",
+    "vue-bundle-renderer",
+    "vue",
+    "unenv",
+    "destr",
+    "ofetch",
+    "hookable",
+    "cookie-es",
+    "scule",
+    "ohash",
+    "@vue/server-renderer",
+    "source-map",
+    "buffer-from",
+    "@vue/shared",
+    "@vue/compiler-ssr",
+    "@vue/runtime-dom",
+    "@vue/compiler-dom",
+    "@vue/compiler-core",
+    "@vue/runtime-core",
+    "@vue/reactivity",
+    "estree-walker",
+    "@babel/parser"
+  ]
+}
