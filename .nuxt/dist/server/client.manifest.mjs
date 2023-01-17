@@ -261,29 +261,29 @@ export default {
       "_index.d4e758c0.js"
     ]
   },
-  "pages/tabs/tab3.css": {
-    "resourceType": "style",
-    "file": "tab3.da778b44.css",
-    "src": "pages/tabs/tab3.css"
-  },
   "pages/tabs/tab4.css": {
     "resourceType": "style",
     "file": "tab4.91ca317e.css",
     "src": "pages/tabs/tab4.css"
-  },
-  "node_modules/@nuxt/ui-templates/dist/templates/error-500.css": {
-    "resourceType": "style",
-    "file": "error-500.aa16ed4d.css",
-    "src": "node_modules/@nuxt/ui-templates/dist/templates/error-500.css"
   },
   "node_modules/nuxt/dist/app/entry.css": {
     "resourceType": "style",
     "file": "entry.39fcf656.css",
     "src": "node_modules/nuxt/dist/app/entry.css"
   },
+  "node_modules/@nuxt/ui-templates/dist/templates/error-500.css": {
+    "resourceType": "style",
+    "file": "error-500.aa16ed4d.css",
+    "src": "node_modules/@nuxt/ui-templates/dist/templates/error-500.css"
+  },
   "node_modules/@nuxt/ui-templates/dist/templates/error-404.css": {
     "resourceType": "style",
     "file": "error-404.23f2309d.css",
     "src": "node_modules/@nuxt/ui-templates/dist/templates/error-404.css"
+  },
+  "pages/tabs/tab3.css": {
+    "resourceType": "style",
+    "file": "tab3.da778b44.css",
+    "src": "pages/tabs/tab3.css"
   }
 }
