@@ -23,23 +23,19 @@ export default defineNuxtConfig({
 	},
 	// Only valid on preview
 	routeRules: {
-		'/': { ssr: false },
+		'/tabs/': { ssr: false },
 		'/api/*': {
 			cors: true,
 			headers: { 'Access-Control-Allow-Origin': '*' },
 		},
 	},
 	// See options here https://github.com/chimurai/http-proxy-middleware#options
-	// proxy: {
-	// 	options: {
-	// 		target: 'https://game-picker-p7mfstlo9-nyllre.vercel.app',
-	// 		changeOrigin: true,
-	// 		secure: false,
-	// 		pathRewrite: {
-	// 			'^/api/todos': '/todos',
-	// 			'^/api/users': '/users',
-	// 		},
-	// 		pathFilter: ['/api/todos', '/api/users'],
-	// 	},
-	// },
+	proxy: {
+		options: {
+			target: 'http://localhost:3001',
+			changeOrigin: true,
+			secure: false,
+			pathFilter: ['/api/count', '/api/custom/'],
+		},
+	},
 });

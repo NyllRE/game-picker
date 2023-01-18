@@ -16,7 +16,15 @@ declare module '@nuxt/schema' {
    },
 
    proxy: {
-      options: Array<any>,
+      options: {
+         target: string,
+
+         changeOrigin: boolean,
+
+         secure: boolean,
+
+         pathFilter: Array<string>,
+      },
    },
   }
   interface PublicRuntimeConfig {
