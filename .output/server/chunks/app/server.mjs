@@ -1086,7 +1086,7 @@ const _routes = [
         meta: __nuxt_page_meta$3,
         alias: (__nuxt_page_meta$3 == null ? void 0 : __nuxt_page_meta$3.alias) || [],
         redirect: (__nuxt_page_meta$3 == null ? void 0 : __nuxt_page_meta$3.redirect) || void 0,
-        component: () => import('./_nuxt/tab1.a5e649a3.mjs').then((m) => m.default || m)
+        component: () => import('./_nuxt/tab1.1dfa50ca.mjs').then((m) => m.default || m)
       },
       {
         name: (_e = __nuxt_page_meta$2 == null ? void 0 : __nuxt_page_meta$2.name) != null ? _e : "tabs-tab2",
@@ -1096,7 +1096,7 @@ const _routes = [
         meta: __nuxt_page_meta$2,
         alias: (__nuxt_page_meta$2 == null ? void 0 : __nuxt_page_meta$2.alias) || [],
         redirect: (__nuxt_page_meta$2 == null ? void 0 : __nuxt_page_meta$2.redirect) || void 0,
-        component: () => import('./_nuxt/tab2.240ab16a.mjs').then((m) => m.default || m)
+        component: () => import('./_nuxt/tab2.037fa9fe.mjs').then((m) => m.default || m)
       },
       {
         name: (_g = __nuxt_page_meta$1 == null ? void 0 : __nuxt_page_meta$1.name) != null ? _g : "tabs-tab3",
@@ -1106,7 +1106,7 @@ const _routes = [
         meta: __nuxt_page_meta$1,
         alias: (__nuxt_page_meta$1 == null ? void 0 : __nuxt_page_meta$1.alias) || [],
         redirect: (__nuxt_page_meta$1 == null ? void 0 : __nuxt_page_meta$1.redirect) || void 0,
-        component: () => import('./_nuxt/tab3.03a9124a.mjs').then((m) => m.default || m)
+        component: () => import('./_nuxt/tab3.ac8e5b11.mjs').then((m) => m.default || m)
       },
       {
         name: (_i = __nuxt_page_meta == null ? void 0 : __nuxt_page_meta.name) != null ? _i : "tabs-tab4",
@@ -1116,13 +1116,13 @@ const _routes = [
         meta: __nuxt_page_meta,
         alias: (__nuxt_page_meta == null ? void 0 : __nuxt_page_meta.alias) || [],
         redirect: (__nuxt_page_meta == null ? void 0 : __nuxt_page_meta.redirect) || void 0,
-        component: () => import('./_nuxt/tab4.c60a7cac.mjs').then((m) => m.default || m)
+        component: () => import('./_nuxt/tab4.13be3c14.mjs').then((m) => m.default || m)
       }
     ],
     meta: __nuxt_page_meta$4,
     alias: (__nuxt_page_meta$4 == null ? void 0 : __nuxt_page_meta$4.alias) || [],
     redirect: (__nuxt_page_meta$4 == null ? void 0 : __nuxt_page_meta$4.redirect) || void 0,
-    component: () => import('./_nuxt/tabs.2921fc2a.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/tabs.a0a25743.mjs').then((m) => m.default || m)
   }
 ];
 const node_modules__64nuxtjs_ionic_dist_runtime_router_mjs_h7T2ZmMnVl = defineNuxtPlugin(async (nuxtApp) => {
@@ -5189,8 +5189,8 @@ const LIFECYCLE_WILL_ENTER = "ionViewWillEnter";
 const LIFECYCLE_DID_ENTER = "ionViewDidEnter";
 const LIFECYCLE_WILL_LEAVE = "ionViewWillLeave";
 const LIFECYCLE_DID_LEAVE = "ionViewDidLeave";
-const iosTransitionAnimation = () => import('./_nuxt/ios.transition.0a7f132a.mjs');
-const mdTransitionAnimation = () => import('./_nuxt/md.transition.da3f83a9.mjs');
+const iosTransitionAnimation = () => import('./_nuxt/ios.transition.93934450.mjs');
+const mdTransitionAnimation = () => import('./_nuxt/md.transition.8b429123.mjs');
 const transition = (opts) => {
   return new Promise((resolve, reject) => {
     writeTask(() => {
@@ -8156,14 +8156,14 @@ const App = /* @__PURE__ */ proxyCustomElement(class extends H {
       rIC(async () => {
         const isHybrid2 = isPlatform(window, "hybrid");
         if (!config.getBoolean("_testing")) {
-          import('./_nuxt/index10.f57f5624.mjs').then((module) => module.startTapClick(config));
+          import('./_nuxt/index10.7c1e2e22.mjs').then((module) => module.startTapClick(config));
         }
         if (config.getBoolean("statusTap", isHybrid2)) {
-          import('./_nuxt/status-tap.a3169216.mjs').then((module) => module.startStatusTap());
+          import('./_nuxt/status-tap.0cb621b4.mjs').then((module) => module.startStatusTap());
         }
         if (config.getBoolean("inputShims", needInputShims())) {
           const platform = isPlatform(window, "ios") ? "ios" : "android";
-          import('./_nuxt/input-shims.44a57a07.mjs').then((module) => module.startInputShims(config, platform));
+          import('./_nuxt/input-shims.15737e7b.mjs').then((module) => module.startInputShims(config, platform));
         }
         const hardwareBackButtonModule = await import('./_nuxt/hardware-back-button.916acb27.mjs');
         if (config.getBoolean("hardwareBackButton", isHybrid2)) {
@@ -8268,7 +8268,7 @@ const RouterOutlet = /* @__PURE__ */ proxyCustomElement(class extends H {
         this.swipeHandler.onStart();
       }
     };
-    this.gesture = (await import('./_nuxt/swipe-back.86dc1660.mjs')).createSwipeBackGesture(this.el, () => !this.gestureOrAnimationInProgress && !!this.swipeHandler && this.swipeHandler.canStart(), () => onStart(), (step) => {
+    this.gesture = (await import('./_nuxt/swipe-back.f7186ae9.mjs')).createSwipeBackGesture(this.el, () => !this.gestureOrAnimationInProgress && !!this.swipeHandler && this.swipeHandler.canStart(), () => onStart(), (step) => {
       var _a2;
       return (_a2 = this.ani) === null || _a2 === void 0 ? void 0 : _a2.progressStep(step);
     }, (shouldComplete, step, dur) => {
@@ -9865,7 +9865,7 @@ const _sfc_main = {
   __name: "nuxt-root",
   __ssrInlineRender: true,
   setup(__props) {
-    const ErrorComponent = defineAsyncComponent(() => import('./_nuxt/error-component.09a96f3c.mjs').then((r) => r.default || r));
+    const ErrorComponent = defineAsyncComponent(() => import('./_nuxt/error-component.1e501cc1.mjs').then((r) => r.default || r));
     const nuxtApp = useNuxtApp();
     nuxtApp.deferHydration();
     provide("_route", useRoute());

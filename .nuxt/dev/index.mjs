@@ -18,10 +18,11 @@ import { createHooks } from 'file:///home/nyll/dev/mobile/playground/node_module
 import { hash } from 'file:///home/nyll/dev/mobile/playground/node_modules/ohash/dist/index.mjs';
 import { createStorage } from 'file:///home/nyll/dev/mobile/playground/node_modules/unstorage/dist/index.mjs';
 import unstorage_47drivers_47fs from 'file:///home/nyll/dev/mobile/playground/node_modules/unstorage/dist/drivers/fs.mjs';
-import defu from 'file:///home/nyll/dev/mobile/playground/node_modules/defu/dist/defu.mjs';
+import defu, { defu as defu$1 } from 'file:///home/nyll/dev/mobile/playground/node_modules/defu/dist/defu.mjs';
 import { toRouteMatcher, createRouter } from 'file:///home/nyll/dev/mobile/playground/node_modules/radix3/dist/index.mjs';
+import { createProxyMiddleware } from 'file:///home/nyll/dev/mobile/playground/node_modules/nuxt-proxy/dist/runtime/middleware.mjs';
 
-const _runtimeConfig = {"app":{"baseURL":"/","buildAssetsDir":"/_nuxt/","cdnURL":""},"nitro":{"routeRules":{"/__nuxt_error":{"cache":false}},"envPrefix":"NUXT_"},"public":{"pwaManifest":{"name":"nuxt-ionic-playground","short_name":"nuxt-ionic-playground","lang":"en","start_url":"/?standalone=true","display":"standalone","background_color":"#ffffff","theme_color":"#000000","icons":[{"src":"/_nuxt/icons/64x64.png","type":"image/png","sizes":"64x64","purpose":"any"},{"src":"/_nuxt/icons/64x64.maskable.png","type":"image/png","sizes":"64x64","purpose":"maskable"},{"src":"/_nuxt/icons/120x120.png","type":"image/png","sizes":"120x120","purpose":"any"},{"src":"/_nuxt/icons/120x120.maskable.png","type":"image/png","sizes":"120x120","purpose":"maskable"},{"src":"/_nuxt/icons/144x144.png","type":"image/png","sizes":"144x144","purpose":"any"},{"src":"/_nuxt/icons/144x144.maskable.png","type":"image/png","sizes":"144x144","purpose":"maskable"},{"src":"/_nuxt/icons/152x152.png","type":"image/png","sizes":"152x152","purpose":"any"},{"src":"/_nuxt/icons/152x152.maskable.png","type":"image/png","sizes":"152x152","purpose":"maskable"},{"src":"/_nuxt/icons/192x192.png","type":"image/png","sizes":"192x192","purpose":"any"},{"src":"/_nuxt/icons/192x192.maskable.png","type":"image/png","sizes":"192x192","purpose":"maskable"},{"src":"/_nuxt/icons/384x384.png","type":"image/png","sizes":"384x384","purpose":"any"},{"src":"/_nuxt/icons/384x384.maskable.png","type":"image/png","sizes":"384x384","purpose":"maskable"},{"src":"/_nuxt/icons/512x512.png","type":"image/png","sizes":"512x512","purpose":"any"},{"src":"/_nuxt/icons/512x512.maskable.png","type":"image/png","sizes":"512x512","purpose":"maskable"}]}}};
+const _runtimeConfig = {"app":{"baseURL":"/","buildAssetsDir":"/_nuxt/","cdnURL":""},"nitro":{"routeRules":{"/__nuxt_error":{"cache":false}},"envPrefix":"NUXT_"},"public":{"pwaManifest":{"name":"nuxt-ionic-playground","short_name":"nuxt-ionic-playground","lang":"en","start_url":"/?standalone=true","display":"standalone","background_color":"#ffffff","theme_color":"#000000","icons":[{"src":"/_nuxt/icons/64x64.png","type":"image/png","sizes":"64x64","purpose":"any"},{"src":"/_nuxt/icons/64x64.maskable.png","type":"image/png","sizes":"64x64","purpose":"maskable"},{"src":"/_nuxt/icons/120x120.png","type":"image/png","sizes":"120x120","purpose":"any"},{"src":"/_nuxt/icons/120x120.maskable.png","type":"image/png","sizes":"120x120","purpose":"maskable"},{"src":"/_nuxt/icons/144x144.png","type":"image/png","sizes":"144x144","purpose":"any"},{"src":"/_nuxt/icons/144x144.maskable.png","type":"image/png","sizes":"144x144","purpose":"maskable"},{"src":"/_nuxt/icons/152x152.png","type":"image/png","sizes":"152x152","purpose":"any"},{"src":"/_nuxt/icons/152x152.maskable.png","type":"image/png","sizes":"152x152","purpose":"maskable"},{"src":"/_nuxt/icons/192x192.png","type":"image/png","sizes":"192x192","purpose":"any"},{"src":"/_nuxt/icons/192x192.maskable.png","type":"image/png","sizes":"192x192","purpose":"maskable"},{"src":"/_nuxt/icons/384x384.png","type":"image/png","sizes":"384x384","purpose":"any"},{"src":"/_nuxt/icons/384x384.maskable.png","type":"image/png","sizes":"384x384","purpose":"maskable"},{"src":"/_nuxt/icons/512x512.png","type":"image/png","sizes":"512x512","purpose":"any"},{"src":"/_nuxt/icons/512x512.maskable.png","type":"image/png","sizes":"512x512","purpose":"maskable"}]}},"proxy":{"options":{"target":"https://game-picker-p7mfstlo9-nyllre.vercel.app","changeOrigin":true,"secure":false,"pathRewrite":{"^/api/todos":"/todos","^/api/users":"/users"},"pathFilter":["/api/todos","/api/users"]}}};
 const ENV_PREFIX = "NITRO_";
 const ENV_PREFIX_ALT = _runtimeConfig.nitro.envPrefix ?? process.env.NITRO_ENV_PREFIX ?? "_";
 const getEnv = (key) => {
@@ -459,6 +460,11 @@ const _f6NkHf = defineEventHandler((event) => {
 
 const _sALeXJ = defineEventHandler(() => useRuntimeConfig().public.pwaManifest);
 
+const buildtimeOptions = {"target":"https://game-picker-p7mfstlo9-nyllre.vercel.app","changeOrigin":true,"secure":false,"pathRewrite":{"^/api/todos":"/todos","^/api/users":"/users"},"pathFilter":["/api/todos","/api/users"]};
+        const runtimeOptions = [].concat(useRuntimeConfig().proxy?.options)[0];
+    
+        const _6V1YZQ = createProxyMiddleware(defu$1(runtimeOptions, buildtimeOptions));
+
 const _lazy_LZ5bhz = () => Promise.resolve().then(function () { return _name_$1; });
 const _lazy_mKQlfi = () => Promise.resolve().then(function () { return count$1; });
 const _lazy_GG9VB5 = () => Promise.resolve().then(function () { return renderer$1; });
@@ -469,6 +475,7 @@ const handlers = [
   { route: '/api/count', handler: _lazy_mKQlfi, lazy: true, middleware: false, method: undefined },
   { route: '/__nuxt_error', handler: _lazy_GG9VB5, lazy: true, middleware: false, method: undefined },
   { route: '/manifest.json', handler: _sALeXJ, lazy: false, middleware: false, method: undefined },
+  { route: '', handler: _6V1YZQ, lazy: false, middleware: true, method: undefined },
   { route: '/**', handler: _lazy_GG9VB5, lazy: true, middleware: false, method: undefined }
 ];
 

@@ -7,14 +7,17 @@
 		"server": "nuxi build",
 		"start": "node .output/server/index.mjs",
 		"ionic:build": "yarn build",
-		"ionic:serve": "yarn dev"
+		"ionic:serve": "yarn dev",
+		"generate": "nuxi generate",
+		"preview": "nuxi preview",
+		"postinstall": "nuxi prepare"
 	},
 	"devDependencies": {
 		"@nuxt/types": "^2.15.8",
 		"@nuxt/typescript-build": "^2.1.0",
 		"@nuxtjs/ionic": "latest",
-		"nuxt": "^3.0.0",
-		"nuxi": "^3.0.0"
+		"nuxi": "^3.0.0",
+		"nuxt": "^3.0.0"
 	},
 	"dependencies": {
 		"@capacitor/android": "4.6.1",
@@ -28,6 +31,7 @@
 		"@capacitor/status-bar": "4.1.1",
 		"@capacitor/storage": "^1.2.5",
 		"@ionic/vue": "^6.4.2",
+		"nuxt-proxy": "^0.3.12",
 		"pug": "^3.0.2"
 	}
 }

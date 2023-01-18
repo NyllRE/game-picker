@@ -2,11 +2,11 @@ const client_manifest = {
   "node_modules/nuxt/dist/app/entry.mjs": {
     "resourceType": "script",
     "module": true,
-    "file": "entry.34711916.js",
+    "file": "entry.ec259545.js",
     "src": "node_modules/nuxt/dist/app/entry.mjs",
     "isEntry": true,
     "dynamicImports": [
-      "_tab2.f64c8475.js",
+      "_tab2.de7053d8.js",
       "node_modules/@ionic/core/components/ios.transition.js",
       "node_modules/@ionic/core/components/md.transition.js",
       "node_modules/@ionic/core/components/swiper.bundle.js",
@@ -27,7 +27,7 @@ const client_manifest = {
   "virtual:nuxt:/home/nyll/dev/mobile/playground/.nuxt/error-component.mjs": {
     "resourceType": "script",
     "module": true,
-    "file": "error-component.038bdb52.js",
+    "file": "error-component.6593acde.js",
     "src": "virtual:nuxt:/home/nyll/dev/mobile/playground/.nuxt/error-component.mjs",
     "isDynamicEntry": true,
     "imports": [
@@ -41,17 +41,17 @@ const client_manifest = {
   "pages/tabs/tab1.vue": {
     "resourceType": "script",
     "module": true,
-    "file": "tab1.edff1844.js",
+    "file": "tab1.69ccb396.js",
     "src": "pages/tabs/tab1.vue",
     "isDynamicEntry": true,
     "imports": [
       "node_modules/nuxt/dist/app/entry.mjs"
     ]
   },
-  "_tab2.f64c8475.js": {
+  "_tab2.de7053d8.js": {
     "resourceType": "script",
     "module": true,
-    "file": "tab2.f64c8475.js",
+    "file": "tab2.de7053d8.js",
     "isDynamicEntry": true,
     "imports": [
       "node_modules/nuxt/dist/app/entry.mjs",
@@ -71,7 +71,7 @@ const client_manifest = {
   "pages/tabs/tab3.vue": {
     "resourceType": "script",
     "module": true,
-    "file": "tab3.144a855e.js",
+    "file": "tab3.dd2a4020.js",
     "src": "pages/tabs/tab3.vue",
     "isDynamicEntry": true,
     "imports": [
@@ -88,7 +88,7 @@ const client_manifest = {
   "pages/tabs/tab4.vue": {
     "resourceType": "script",
     "module": true,
-    "file": "tab4.fd23cd9c.js",
+    "file": "tab4.c17ba08f.js",
     "src": "pages/tabs/tab4.vue",
     "isDynamicEntry": true,
     "imports": [
@@ -96,26 +96,26 @@ const client_manifest = {
     ],
     "css": []
   },
-  "tab4.91ca317e.css": {
-    "file": "tab4.91ca317e.css",
+  "tab4.8b98b5ca.css": {
+    "file": "tab4.8b98b5ca.css",
     "resourceType": "style"
   },
   "pages/tabs.vue": {
     "resourceType": "script",
     "module": true,
-    "file": "tabs.217f764f.js",
+    "file": "tabs.8c8ce1d4.js",
     "src": "pages/tabs.vue",
     "isDynamicEntry": true,
     "imports": [
       "node_modules/nuxt/dist/app/entry.mjs",
-      "_composables.d706270c.js",
+      "_composables.2eda92bb.js",
       "_index.d4e758c0.js"
     ]
   },
-  "_composables.d706270c.js": {
+  "_composables.2eda92bb.js": {
     "resourceType": "script",
     "module": true,
-    "file": "composables.d706270c.js",
+    "file": "composables.2eda92bb.js",
     "imports": [
       "node_modules/nuxt/dist/app/entry.mjs"
     ]
@@ -130,7 +130,7 @@ const client_manifest = {
   "node_modules/@ionic/core/components/swipe-back.js": {
     "resourceType": "script",
     "module": true,
-    "file": "swipe-back.bfdea6d3.js",
+    "file": "swipe-back.8da1f7cb.js",
     "src": "node_modules/@ionic/core/components/swipe-back.js",
     "isDynamicEntry": true,
     "imports": [
@@ -140,7 +140,7 @@ const client_manifest = {
   "node_modules/@ionic/core/components/index10.js": {
     "resourceType": "script",
     "module": true,
-    "file": "index10.e7f967b7.js",
+    "file": "index10.2af86a7f.js",
     "src": "node_modules/@ionic/core/components/index10.js",
     "isDynamicEntry": true,
     "imports": [
@@ -150,7 +150,7 @@ const client_manifest = {
   "node_modules/@ionic/core/components/status-tap.js": {
     "resourceType": "script",
     "module": true,
-    "file": "status-tap.db487ce4.js",
+    "file": "status-tap.82277796.js",
     "src": "node_modules/@ionic/core/components/status-tap.js",
     "isDynamicEntry": true,
     "imports": [
@@ -160,7 +160,7 @@ const client_manifest = {
   "node_modules/@ionic/core/components/input-shims.js": {
     "resourceType": "script",
     "module": true,
-    "file": "input-shims.9198ef59.js",
+    "file": "input-shims.d0b39aac.js",
     "src": "node_modules/@ionic/core/components/input-shims.js",
     "isDynamicEntry": true,
     "imports": [
@@ -170,7 +170,7 @@ const client_manifest = {
   "node_modules/@ionic/core/components/ios.transition.js": {
     "resourceType": "script",
     "module": true,
-    "file": "ios.transition.036fc246.js",
+    "file": "ios.transition.00f3692d.js",
     "src": "node_modules/@ionic/core/components/ios.transition.js",
     "isDynamicEntry": true,
     "imports": [
@@ -180,7 +180,7 @@ const client_manifest = {
   "node_modules/@ionic/core/components/md.transition.js": {
     "resourceType": "script",
     "module": true,
-    "file": "md.transition.8fc67c96.js",
+    "file": "md.transition.73a23a6c.js",
     "src": "node_modules/@ionic/core/components/md.transition.js",
     "isDynamicEntry": true,
     "imports": [
@@ -190,12 +190,12 @@ const client_manifest = {
   "node_modules/@nuxt/ui-templates/dist/templates/error-404.vue": {
     "resourceType": "script",
     "module": true,
-    "file": "error-404.b9e362ff.js",
+    "file": "error-404.bfb70f0b.js",
     "src": "node_modules/@nuxt/ui-templates/dist/templates/error-404.vue",
     "isDynamicEntry": true,
     "imports": [
       "node_modules/nuxt/dist/app/entry.mjs",
-      "_composables.d706270c.js"
+      "_composables.2eda92bb.js"
     ],
     "css": []
   },
@@ -206,11 +206,11 @@ const client_manifest = {
   "node_modules/@nuxt/ui-templates/dist/templates/error-500.vue": {
     "resourceType": "script",
     "module": true,
-    "file": "error-500.db7b43f7.js",
+    "file": "error-500.e1036cbc.js",
     "src": "node_modules/@nuxt/ui-templates/dist/templates/error-500.vue",
     "isDynamicEntry": true,
     "imports": [
-      "_composables.d706270c.js",
+      "_composables.2eda92bb.js",
       "node_modules/nuxt/dist/app/entry.mjs"
     ],
     "css": []
@@ -222,11 +222,11 @@ const client_manifest = {
   "node_modules/@capacitor/camera/dist/esm/web.js": {
     "resourceType": "script",
     "module": true,
-    "file": "web.e98100bd.js",
+    "file": "web.56e31b29.js",
     "src": "node_modules/@capacitor/camera/dist/esm/web.js",
     "isDynamicEntry": true,
     "imports": [
-      "_tab2.f64c8475.js",
+      "_tab2.de7053d8.js",
       "node_modules/nuxt/dist/app/entry.mjs",
       "_index.d4e758c0.js"
     ]
@@ -234,11 +234,11 @@ const client_manifest = {
   "node_modules/@capacitor/filesystem/dist/esm/web.js": {
     "resourceType": "script",
     "module": true,
-    "file": "web.f7026a9b.js",
+    "file": "web.264f61fd.js",
     "src": "node_modules/@capacitor/filesystem/dist/esm/web.js",
     "isDynamicEntry": true,
     "imports": [
-      "_tab2.f64c8475.js",
+      "_tab2.de7053d8.js",
       "node_modules/nuxt/dist/app/entry.mjs",
       "_index.d4e758c0.js"
     ]
@@ -246,39 +246,39 @@ const client_manifest = {
   "node_modules/@capacitor/storage/dist/esm/web.js": {
     "resourceType": "script",
     "module": true,
-    "file": "web.db26ee8c.js",
+    "file": "web.f890fb5d.js",
     "src": "node_modules/@capacitor/storage/dist/esm/web.js",
     "isDynamicEntry": true,
     "imports": [
-      "_tab2.f64c8475.js",
+      "_tab2.de7053d8.js",
       "node_modules/nuxt/dist/app/entry.mjs",
       "_index.d4e758c0.js"
     ]
-  },
-  "node_modules/nuxt/dist/app/entry.css": {
-    "resourceType": "style",
-    "file": "entry.39fcf656.css",
-    "src": "node_modules/nuxt/dist/app/entry.css"
-  },
-  "pages/tabs/tab4.css": {
-    "resourceType": "style",
-    "file": "tab4.91ca317e.css",
-    "src": "pages/tabs/tab4.css"
   },
   "pages/tabs/tab3.css": {
     "resourceType": "style",
     "file": "tab3.da778b44.css",
     "src": "pages/tabs/tab3.css"
   },
+  "node_modules/@nuxt/ui-templates/dist/templates/error-500.css": {
+    "resourceType": "style",
+    "file": "error-500.aa16ed4d.css",
+    "src": "node_modules/@nuxt/ui-templates/dist/templates/error-500.css"
+  },
+  "pages/tabs/tab4.css": {
+    "resourceType": "style",
+    "file": "tab4.8b98b5ca.css",
+    "src": "pages/tabs/tab4.css"
+  },
   "node_modules/@nuxt/ui-templates/dist/templates/error-404.css": {
     "resourceType": "style",
     "file": "error-404.23f2309d.css",
     "src": "node_modules/@nuxt/ui-templates/dist/templates/error-404.css"
   },
-  "node_modules/@nuxt/ui-templates/dist/templates/error-500.css": {
+  "node_modules/nuxt/dist/app/entry.css": {
     "resourceType": "style",
-    "file": "error-500.aa16ed4d.css",
-    "src": "node_modules/@nuxt/ui-templates/dist/templates/error-500.css"
+    "file": "entry.39fcf656.css",
+    "src": "node_modules/nuxt/dist/app/entry.css"
   }
 };
 

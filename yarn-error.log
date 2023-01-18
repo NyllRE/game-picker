@@ -1,5 +1,5 @@
 Arguments: 
-  /home/nyll/.nvm/versions/node/v16.16.0/bin/node /home/nyll/bin/yarn add @capacitor/app @capacitor/haptics @capacitor/keyboard @capacitor/status-b
+  /home/nyll/.nvm/versions/node/v16.16.0/bin/node /home/nyll/bin/yarn add @nuxt/proxy
 
 PATH: 
   /home/nyll/.local/share/pnpm:/home/nyll/anaconda3/bin:/home/nyll/anaconda3/condabin:/home/nyll/.local/share/pnpm:/home/nyll/.nvm/versions/node/v16.16.0/bin:/home/nyll/.local/bin:/home/nyll/bin:/usr/lib64/ccache:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/var/lib/snapd/snap/bin
@@ -14,7 +14,7 @@ Platform:
   linux x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/@capacitor%2fstatus-b: Not found
+  Error: https://registry.yarnpkg.com/@nuxt%2fproxy: Not found
       at Request.params.callback [as _callback] (/home/nyll/lib/node_modules/yarn/lib/cli.js:66145:18)
       at Request.self.callback (/home/nyll/lib/node_modules/yarn/lib/cli.js:140890:22)
       at Request.emit (node:events:527:28)
@@ -28,36 +28,40 @@ Trace:
 
 npm manifest: 
   {
-    "private": true,
-    "name": "nuxt-ionic-playground",
-    "type": "module",
-    "scripts": {
-      "dev": "nuxi dev",
-      "build": "nuxi generate",
-      "ionic:build": "npm run build",
-      "ionic:serve": "npm run dev"
-    },
-    "devDependencies": {
-      "@capacitor/android": "^4.6.1",
-      "@capacitor/camera": "4.1.4",
-      "@capacitor/core": "4.6.1",
-      "@capacitor/filesystem": "4.1.4",
-      "@capacitor/preferences": "^4.0.2",
-      "@capacitor/storage": "^1.2.5",
-      "@nuxt/types": "^2.15.8",
-      "@nuxt/typescript-build": "^2.1.0",
-      "@nuxtjs/ionic": "latest",
-      "nuxt": "^3.0.0-rc.12"
-    },
-    "dependencies": {
-      "@capacitor/app": "4.1.1",
-      "@capacitor/cli": "4.6.1",
-      "@capacitor/haptics": "4.1.0",
-      "@capacitor/keyboard": "4.1.0",
-      "@capacitor/status-bar": "4.1.1",
-      "@ionic/vue": "^6.4.2",
-      "pug": "^3.0.2"
-    }
+  	"private": true,
+  	"name": "nuxt-ionic-playground",
+  	"scripts": {
+  		"dev": "nuxi dev",
+  		"build": "nuxi generate",
+  		"server": "nuxi build",
+  		"start": "node .output/server/index.mjs",
+  		"ionic:build": "yarn build",
+  		"ionic:serve": "yarn dev",
+  		"generate": "nuxi generate",
+  		"preview": "nuxi preview",
+  		"postinstall": "nuxi prepare"
+  	},
+  	"devDependencies": {
+  		"@nuxt/types": "^2.15.8",
+  		"@nuxt/typescript-build": "^2.1.0",
+  		"@nuxtjs/ionic": "latest",
+  		"nuxt": "^3.0.0",
+  		"nuxi": "^3.0.0"
+  	},
+  	"dependencies": {
+  		"@capacitor/android": "4.6.1",
+  		"@capacitor/app": "4.1.1",
+  		"@capacitor/camera": "4.1.4",
+  		"@capacitor/cli": "4.6.1",
+  		"@capacitor/core": "4.6.1",
+  		"@capacitor/filesystem": "4.1.4",
+  		"@capacitor/haptics": "4.1.0",
+  		"@capacitor/keyboard": "4.1.0",
+  		"@capacitor/status-bar": "4.1.1",
+  		"@capacitor/storage": "^1.2.5",
+  		"@ionic/vue": "^6.4.2",
+  		"pug": "^3.0.2"
+  	}
   }
 
 yarn manifest: 
@@ -343,7 +347,7 @@ Lockfile:
       "@babel/helper-validator-identifier" "^7.19.1"
       to-fast-properties "^2.0.0"
   
-  "@capacitor/android@^4.6.1":
+  "@capacitor/android@4.6.1":
     version "4.6.1"
     resolved "https://registry.yarnpkg.com/@capacitor/android/-/android-4.6.1.tgz#50e437934bf535eb839266df4d60204aace79561"
     integrity sha512-Hnh1tmUr1SP67U6D6ry5I5BEBSN/1nkBAIjQIqf5tF82WNxKbpbC6GfkHE4hMJZinRTrCf36LkrdP8srh7SxoA==
@@ -402,11 +406,6 @@ Lockfile:
     version "4.1.0"
     resolved "https://registry.yarnpkg.com/@capacitor/keyboard/-/keyboard-4.1.0.tgz#a49e3a416fee75cf69706890ed7abb9ec3edf7fd"
     integrity sha512-5fanmJLdkXLEaro0oezkmpC15tBGlsLW4cp1jQTMPwyX6NLlPUFHdWUhMERzxL2QXHmHvtoFMJ4m15Eymgefuw==
-  
-  "@capacitor/preferences@^4.0.2":
-    version "4.0.2"
-    resolved "https://registry.yarnpkg.com/@capacitor/preferences/-/preferences-4.0.2.tgz#83bee8cadb3456a4f2a89118b8351d488c20ec77"
-    integrity sha512-HgcRkMdVHSIV3TeQLZFmCaCeMWQ25wLyZZ7dA2f8Rw81Q1Nroxsi7HxTEGNqrWKSN9PNKBJD8vChr6eB2GNtZg==
   
   "@capacitor/status-bar@4.1.1":
     version "4.1.1"
@@ -4491,14 +4490,14 @@ Lockfile:
     dependencies:
       boolbase "^1.0.0"
   
-  nuxi@3.0.0:
+  nuxi@3.0.0, nuxi@^3.0.0:
     version "3.0.0"
     resolved "https://registry.yarnpkg.com/nuxi/-/nuxi-3.0.0.tgz#09e5951f2ecc561df4fb410d9e21952c2f161f34"
     integrity sha512-VWh1kKFffxD2yadZWcQSd6eTf9okXRr7d3HsjLiI4B3Q1/8iKdIUiodGo7X71OZ+gPVnX6Oh/XFzcb7mr+8TbQ==
     optionalDependencies:
       fsevents "~2.3.2"
   
-  nuxt@^3.0.0-rc.12:
+  nuxt@^3.0.0:
     version "3.0.0"
     resolved "https://registry.yarnpkg.com/nuxt/-/nuxt-3.0.0.tgz#0909e6566d79805f3a4ed6229573817cbde12e89"
     integrity sha512-RNlD78uv04ZiXWmlx9f1tnJfrqsYAWHU+4gbgOTQpIBmQzHWPWiox+fm/1m93iKfEd5sJi9TJUoXX5yBObVZYw==

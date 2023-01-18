@@ -17,11 +17,13 @@ const animation = createAnimation()
 		{ offset: 1, background: 'green' },
 	]);
 
+
+
 const data = ref('fetchin');
 onMounted(async () => {
 	console.log(squareRef.value, animation);
 	animation.play();
-	data.value = await $fetch('http://localhost:3000/api/count')
+	data.value = await $fetch('https://game-picker-p7mfstlo9-nyllre.vercel.app/api/count')
 		.then((res) => res.api)
 		.catch((e) => 'error: ' + e);
 });
