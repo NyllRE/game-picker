@@ -1,29 +1,12 @@
 <!-- @format -->
 
 <script setup>
-const tester = (an) => {
-	an.play();
-	console.log(an);
-};
 
-// Template ref of your element
-const squareRef = ref();
-// Your animation object
-const animation = createAnimation()
-	.addElement(squareRef.value)
-	.duration(3000)
-	.keyframes([
-		{ offset: 0, background: 'red' },
-		{ offset: 1, background: 'green' },
-	]);
-
-
-
-const data = ref('fetchin');
+const data = ref('fetching');
 onMounted(async () => {
-	console.log(squareRef.value, animation);
-	animation.play();
-	data.value = await $fetch('https://game-picker-p7mfstlo9-nyllre.vercel.app/api/count')
+	data.value = await $fetch('/api/count', {
+		mode: 'no-cors'
+	})
 		.then((res) => res.api)
 		.catch((e) => 'error: ' + e);
 });
@@ -31,9 +14,14 @@ onMounted(async () => {
 const url = ref('');
 const tryInternet = async () => {
 	// fetch data from url and return it
-	data.value = await $fetch(url.value)
-		.then((res) => res)
-		.catch((e) => 'error: ' + e);
+	data.value = await useFetch(url.value, {
+		mode: 'no-cors'
+	})
+		.then((res) => {
+			console.log(res);
+			return res
+		})
+		.catch((e) => 'error: ' + e)
 };
 </script>
 
