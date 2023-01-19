@@ -19,7 +19,7 @@ const tryInternet = async () => {
 	})
 		.then((res) => {
 			console.log(res);
-			return res
+			return res.data;
 		})
 		.catch((e) => 'error: ' + e)
 };
@@ -29,7 +29,7 @@ const tryInternet = async () => {
 IonPage
 	ion-header
 		ion-toolbar
-			ion-title Animation examples
+			ion-title API example
 	IonContent(:fullscreen="true")
 		.ion-padding
 			h1 {{ data }}

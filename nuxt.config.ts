@@ -25,17 +25,15 @@ export default defineNuxtConfig({
 	routeRules: {
 		'/tabs/': { ssr: false },
 		'/api/*': {
-			cors: true,
+			cors: false,
 			headers: { 'Access-Control-Allow-Origin': '*' },
 		},
 	},
 	// See options here https://github.com/chimurai/http-proxy-middleware#options
-	proxy: {
-		options: {
-			target: 'http://localhost:3001',
-			changeOrigin: true,
-			secure: false,
-			pathFilter: ['/api/count', '/api/custom/'],
-		},
-	},
+	// proxy: {
+	// 	options: {
+	// 		target: 'http://localhost:3000',
+	// 		secure: false,
+	// 	},
+	// },
 });
