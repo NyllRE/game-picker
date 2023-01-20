@@ -23,7 +23,7 @@ export default defineNuxtConfig({
 	},
 	// Only valid on preview
 	routeRules: {
-		'/tabs/': { ssr: false },
+		'/tabs/*': { ssr: false },
 		'/api/*': {
 			cors: false,
 			headers: { 'Access-Control-Allow-Origin': '*' },

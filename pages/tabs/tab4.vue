@@ -14,11 +14,8 @@ onMounted(async () => {
 const url = ref('');
 const tryInternet = async () => {
 	// fetch data from url and return it
-	data.value = await useFetch(url.value, {
-		mode: 'no-cors'
-	})
-		.then((res) => {
-			console.log(res);
+	data.value = await useFetch(url.value)
+		.then(res => {
 			return res.data;
 		})
 		.catch((e) => 'error: ' + e)

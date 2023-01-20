@@ -32,6 +32,8 @@
 		"@capacitor/storage": "^1.2.5",
 		"@ionic/vue": "^6.4.2",
 		"nuxt-proxy": "^0.3.12",
-		"pug": "^3.0.2"
+		"pug": "^3.0.2",
+		"sass": "^1.57.1",
+		"sass-loader": "^13.2.0"
 	}
 }
