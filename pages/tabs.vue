@@ -19,9 +19,9 @@ ion-page
           ion-icon(:icon="ioniconsImages")
           ion-label Photos
         ion-tab-button(tab="tab3" href="/tabs/tab3")
-          ion-icon(:icon="ioniconsBulb")
-          ion-label Tab 3
+          ion-icon(:icon="ioniconsList")
+          ion-label Todo
         ion-tab-button(tab="tab4" href="/tabs/tab4")
-          ion-icon(:icon="ioniconsAccessibility")
-          ion-label Animations
+          ion-icon(:icon="ioniconsGlobe")
+          ion-label API
 </template>

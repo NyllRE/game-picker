@@ -8,22 +8,14 @@ definePageMeta({
 
 <template lang="pug">
 ion-page
-  ion-header(translucent)
+  ion-header
     ion-toolbar
-      ion-thumbnail(slot="start")
-        ion-img(src="/icon.png")
-      ion-title Nuxt Ionic
+      ion-title Tab 3
   ion-content(:fullscreen="true")
     ion-header(collapse="condense")
       ion-toolbar
         ion-title(size="large")
           | Tab 1
-    ion-list
-      ion-item
-        ion-checkbox(slot="start")
-        ion-label
-          h1 Create Idea
-          ion-note Run Idea By Brandy
-        ion-badge(slot="end" color="success")
-          | 5 Days
+    ExploreContainer(name="Tab 1 page")
+
 </template>
