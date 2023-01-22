@@ -15,6 +15,10 @@ declare module '@nuxt/schema' {
       cdnURL: string,
    },
 
+   jwtAccessSecret: string,
+
+   jwtRefreshSecret: string,
+
    proxy: {
       options: Array<any>,
    },

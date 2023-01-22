@@ -4,6 +4,10 @@
 
 export default defineNuxtConfig({
 	modules: ['@nuxtjs/ionic', 'nuxt-proxy'],
+	runtimeConfig: {
+		jwtAccessSecret: process.env.JWT_ACCESS_SECRET,
+		jwtRefreshSecret: process.env.JWT_REFRESH_SECRET,
+	},
 	experimental: {
 		payloadExtraction: false,
 	},

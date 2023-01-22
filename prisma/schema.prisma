@@ -8,12 +8,22 @@ generator client {
 datasource db {
   provider     = "sqlite"
   url          = env("DATABASE_URL")
-  relationMode = "prisma"
 }
 
 model User {
-  id       String   @id @unique @default(uuid()) @map("_id")
-  username String   @unique
-  password String
-  updated  DateTime @updatedAt
+  id           String         @id @unique @default(uuid()) @map("_id")
+  username     String         @unique
+  password     String
+  updated      DateTime       @updatedAt
+  refreshToken RefreshToken[]
+}
+
+model RefreshToken {
+  id     String @id @unique @default(uuid()) @map("_id")
+  token  String @unique
+  userId String @default(uuid())
+  user   User   @relation(fields: [userId], references: [id])
+
+  created DateTime @default(now())
+  updated DateTime @updatedAt
 }

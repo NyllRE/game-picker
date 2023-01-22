@@ -1,6 +1,7 @@
 node_modules
 .output
 dist
+prisma/dev.db
 .nuxt
 .output/nitro.json
 .output/public/_nuxt/composables.d706270c.js
