@@ -10,6 +10,16 @@
           "level": "secondary",
           "done": false
         }
+      },
+      {
+        "key": 1674514387923,
+        "children": [],
+        "todo": {
+          "content": "figure out how you set the \"authorization\" header",
+          "id": 1674514387923,
+          "level": "danger",
+          "done": false
+        }
       }
     ],
     "expandKeys": [],

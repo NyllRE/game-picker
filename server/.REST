@@ -24,6 +24,3 @@ GET http://localhost:3000/api/auth/refresh
 ###
 
 GET http://localhost:3000/api/auth/user
-{
-	"accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQwY2Y5NDFmLWFlZWYtNGYyZi1iMjA3LWQ5ZGU4YmRjMDUwNSIsImlhdCI6MTY3NDUxMTAzNSwiZXhwIjoxNjc0NTExNjM1fQ.Z0klp8IM6w9f3oLvLixoGw94a1AS4_i-mjaSWFIVC9A"
-}

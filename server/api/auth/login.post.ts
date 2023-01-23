@@ -4,7 +4,7 @@ import { getUserByUsername } from '~~/server/db/users';
 
 import { User } from '@prisma/client';
 
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 import { generateTokens } from '~~/server/utils/jwt';
 import { createRefreshToken } from '~~/server/db/refreshTokens';
 

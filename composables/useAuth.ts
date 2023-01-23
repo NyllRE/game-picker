@@ -26,7 +26,6 @@ export default () => {
 				setToken(data.accessToken);
 				setUser(data.user);
 
-				console.log(data);
 				resolve(true);
 			} catch (error) {
 				reject(error);

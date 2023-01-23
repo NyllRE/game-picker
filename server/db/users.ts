@@ -1,7 +1,7 @@
 /** @format */
 
 import { prisma } from '.';
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 
 export const createUser = async (userData: any) => {
 	const securedData = {
