@@ -1420,6 +1420,7 @@ declare global {
   const useAppConfig: typeof import('../../node_modules/nuxt/dist/app')['useAppConfig']
   const useAsyncData: typeof import('../../node_modules/nuxt/dist/app')['useAsyncData']
   const useAttrs: typeof import('vue')['useAttrs']
+  const useAuth: typeof import('../../composables/useAuth')['default']
   const useBackButton: typeof import('@ionic/vue')['useBackButton']
   const useCookie: typeof import('../../node_modules/nuxt/dist/app')['useCookie']
   const useCssModule: typeof import('vue')['useCssModule']
@@ -2875,6 +2876,7 @@ declare module 'vue' {
     readonly useAppConfig: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app')['useAppConfig']>
     readonly useAsyncData: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app')['useAsyncData']>
     readonly useAttrs: UnwrapRef<typeof import('vue')['useAttrs']>
+    readonly useAuth: UnwrapRef<typeof import('../../composables/useAuth')['default']>
     readonly useBackButton: UnwrapRef<typeof import('@ionic/vue')['useBackButton']>
     readonly useCookie: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app')['useCookie']>
     readonly useCssModule: UnwrapRef<typeof import('vue')['useCssModule']>

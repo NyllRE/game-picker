@@ -40,6 +40,7 @@
 		"nuxt-proxy": "^0.3.12",
 		"pug": "^3.0.2",
 		"sass": "^1.57.1",
-		"sass-loader": "^13.2.0"
+		"sass-loader": "^13.2.0",
+		"url-pattern": "^1.0.3"
 	}
 }

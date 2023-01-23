@@ -2,11 +2,12 @@
 defineProps({ name: String })
 </script>
 
-<template>
-  <div id="container">
-    <strong>{{ name }}</strong>
-    <p>Explore <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+<template lang="pug">
+#container
+  strong {{ name }}
+  p Explore
+    a(target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components")
+      | UI Components
 </template>
 
 <style scoped>

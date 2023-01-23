@@ -2,7 +2,9 @@
 import type { Defu } from 'defu'
 
 
-declare const inlineConfig = {}
+declare const inlineConfig = {
+  "url": "http://localhost:3000"
+}
 type ResolvedAppConfig = Defu<typeof inlineConfig, []>
 
 declare module '@nuxt/schema' {

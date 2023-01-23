@@ -1,0 +1,25 @@
+{
+  "todotree": {
+    "tree": [
+      {
+        "key": 1674415372520,
+        "children": [],
+        "todo": {
+          "content": "add image from capacitor gallery to user data",
+          "id": 1674415372520,
+          "level": "secondary",
+          "done": false
+        }
+      }
+    ],
+    "expandKeys": [],
+    "schema": "https://github.com/Saber2pr/vsc-ext-todolist/blob/master/src/api/type.ts#L3",
+    "add_mode": "bottom",
+    "virtual": false,
+    "showLine": false,
+    "playFontSize": 24,
+    "title": "I_dont_think_ill_do_this",
+    "autoSort": false,
+    "lang": "en"
+  }
+}

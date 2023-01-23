@@ -8,6 +8,9 @@ export default defineNuxtConfig({
 		jwtAccessSecret: process.env.JWT_ACCESS_SECRET,
 		jwtRefreshSecret: process.env.JWT_REFRESH_SECRET,
 	},
+	appConfig: {
+		url: process.env.API_URL,
+	},
 	experimental: {
 		payloadExtraction: false,
 	},
@@ -25,7 +28,6 @@ export default defineNuxtConfig({
 			utilities: false,
 		},
 	},
-	// Only valid on preview
 	routeRules: {
 		'/tabs/*': { ssr: false },
 		'/api/*': {
@@ -33,11 +35,4 @@ export default defineNuxtConfig({
 			headers: { 'Access-Control-Allow-Origin': '*' },
 		},
 	},
-	// See options here https://github.com/chimurai/http-proxy-middleware#options
-	// proxy: {
-	// 	options: {
-	// 		target: 'http://localhost:3000',
-	// 		secure: false,
-	// 	},
-	// },
 });
