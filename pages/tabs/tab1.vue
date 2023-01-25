@@ -1,14 +1,14 @@
 <!-- @format -->
 
-<script setup lang="ts">
+<script setup>
 definePageMeta({
 	alias: ['/', '/tabs'],
 });
 
-const { useAuthUser, login, useAuthToken, getUser } = useAuth()
-const user = useAuthUser()
-const token = useAuthToken()
-const config = useAppConfig()
+const { useAuthUser, login, getUser, useLoading } = useAuth()
+const user = ref(JSON.parse(useAuthUser().value))
+const loading = useLoading()
+console.log(user.value.name);
 
 const form = reactive({
   username: '',
@@ -22,11 +22,8 @@ const loginUser = () => {
   })
 }
 
-const userData = ref()
 
-const toggleUser = async () => {
-  userData.value = await getUser()
-}
+
 
 </script>
 
@@ -34,9 +31,13 @@ const toggleUser = async () => {
 ion-page
   ion-header
     ion-toolbar
-      ion-title Tab 3
+      ion-title Home
   ion-content(:fullscreen="true")
-    .ion-padding( v-if="!user" )
+
+    .loading( v-if="loading")
+      h1 Loading
+
+    .ion-padding( v-else-if="!user" )
       ion-item
         ion-label( position="floating" ) Username
         ion-input( v-model.lazy="form.username" )
@@ -44,9 +45,19 @@ ion-page
         ion-label( position="floating" ) Password
         ion-input( type="password" v-model.lazy="form.password" )
       ion-button( expand="block" @click="loginUser()" ) Login
-    template( v-else )
-      h1 Welcome!
-      ion-button( @click="toggleUser()" ) Get User
-      p {{ useState('auth_user') }}
 
+    .center( v-else )
+      h1 Welcome {{ user.name || 'br' }}!
+      img( src="/icon.png" )
+      ion-button( @click="" ) change image
 </template>
+
+
+<style lang="sass">
+
+.center
+  display: grid
+  place-items: center
+  text-align: center
+
+</style>
