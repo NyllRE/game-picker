@@ -23,8 +23,11 @@ export default () => {
 					method: 'POST',
 					body: { username, password },
 				});
-				setToken(data.accessToken);
+				setToken(data.user.accessToken);
 				setUser(data.user);
+
+				console.log(useAuthToken().value);
+				console.log(useAuthUser().value);
 
 				resolve(true);
 			} catch (error) {
@@ -56,15 +59,10 @@ export default () => {
 		});
 	};
 
-
 	const getUser = () => {
 		return new Promise(async (resolve, reject) => {
 			try {
-				const data = await $fetch(`${config.url}/api/auth/user`, {
-					Headers: {
-						Authorization: `Bearer ${useAuthToken().value}`,
-					},
-				});
+				const data = await useFetchApi(`${config.url}/api/auth/user`);
 
 				setUser(data.user);
 				resolve(true);

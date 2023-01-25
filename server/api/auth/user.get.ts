@@ -2,7 +2,6 @@
 
 export default defineEventHandler(async (event) => {
 	const user = event.context.auth?.user;
-	console.log('lmao?', user);
 
 	return {
 		user: {

@@ -24,7 +24,6 @@ export default defineEventHandler(async (event) => {
 	if (!isHandledByMiddleware) return;
 
 	const token = event.node.req.headers['authorization']?.split(' ')[1]!;
-	// const token = event.node.req.headers['cookie']?.split('=')[1] //=> refresh token
 	console.log('middleware: ', event.node.req.headers);
 
 	const decoded = decodeAccessToken(token);
@@ -43,7 +42,6 @@ export default defineEventHandler(async (event) => {
 		const userId = decoded.id;
 		const user = await getUserById(userId);
 		event.context.auth = { user };
-		console.log(event.context.auth);
 	} catch (err) {
 		console.error(err);
 

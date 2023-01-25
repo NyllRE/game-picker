@@ -24,6 +24,9 @@ const loginUser = () => {
 
 const userData = ref()
 
+const toggleUser = async () => {
+  userData.value = await getUser()
+}
 
 </script>
 
@@ -43,7 +46,7 @@ ion-page
       ion-button( expand="block" @click="loginUser()" ) Login
     template( v-else )
       h1 Welcome!
-      ion-button( @click="getUser" ) Get User
-      p {{ userData }}
+      ion-button( @click="toggleUser()" ) Get User
+      p {{ useState('auth_user') }}
 
 </template>
