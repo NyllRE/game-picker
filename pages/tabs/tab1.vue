@@ -5,8 +5,10 @@ definePageMeta({
 	alias: ['/', '/tabs'],
 });
 
-const { useAuthUser, login } = useAuth()
+const { useAuthUser, login, useAuthToken, getUser } = useAuth()
 const user = useAuthUser()
+const token = useAuthToken()
+const config = useAppConfig()
 
 const form = reactive({
   username: '',
@@ -19,6 +21,9 @@ const loginUser = () => {
     password: form.password,
   })
 }
+
+const userData = ref()
+
 
 </script>
 
@@ -36,6 +41,9 @@ ion-page
         ion-label( position="floating" ) Password
         ion-input( type="password" v-model.lazy="form.password" )
       ion-button( expand="block" @click="loginUser()" ) Login
-    h1( v-else ) Welcome!
+    template( v-else )
+      h1 Welcome!
+      ion-button( @click="getUser" ) Get User
+      p {{ userData }}
 
 </template>

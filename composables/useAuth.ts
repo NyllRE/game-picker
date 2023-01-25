@@ -56,6 +56,24 @@ export default () => {
 		});
 	};
 
+
+	const getUser = () => {
+		return new Promise(async (resolve, reject) => {
+			try {
+				const data = await $fetch(`${config.url}/api/auth/user`, {
+					Headers: {
+						Authorization: `Bearer ${useAuthToken().value}`,
+					},
+				});
+
+				setUser(data.user);
+				resolve(true);
+			} catch (error) {
+				reject(error);
+			}
+		});
+	};
+
 	return {
 		login,
 		useAuthToken,
@@ -64,5 +82,6 @@ export default () => {
 		setUser,
 		refreshToken,
 		initAuth,
+		getUser,
 	};
 };

@@ -24,10 +24,10 @@ export default defineEventHandler(async (event) => {
 	if (!isHandledByMiddleware) return;
 
 	const token = event.node.req.headers['authorization']?.split(' ')[1]!;
+	// const token = event.node.req.headers['cookie']?.split('=')[1] //=> refresh token
+	console.log('middleware: ', event.node.req.headers);
 
 	const decoded = decodeAccessToken(token);
-	// console.log(event.node.req.headers['cookie']?.split('=')[1]);
-	console.log(token);
 
 	if (!decoded) {
 		return sendError(

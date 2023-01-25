@@ -1,9 +1,14 @@
 /** @format */
 
 export default defineEventHandler(async (event) => {
-	console.log('lmao?', event.context.auth);
+	const user = event.context.auth?.user;
+	console.log('lmao?', user);
 
 	return {
-		user: event.context.auth,
+		user: {
+			id: user.id,
+			name: user.username,
+			updated: user.updated,
+		},
 	};
 });
