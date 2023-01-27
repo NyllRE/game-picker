@@ -50,6 +50,39 @@ export default () => {
 		});
 	};
 
+
+	const register = async ({ username, password }: any) => {
+		return new Promise(async (resolve, reject) => {
+			try {
+				useLoading().value = true;
+				const data = await $fetch(`${config.url}/api/auth/register`, {
+					method: 'POST',
+					body: { username, password },
+				});
+
+				//==<< TODO: login automatically >>==//
+
+				// setToken(data.user.accessToken);
+				// setUser(
+				// 	JSON.stringify({
+				// 		id: data.user.id,
+				// 		name: data.user.username,
+				// 	})
+				// );
+
+				console.log({
+					id: data.id,
+					name: data.username,
+				});
+				useLoading().value = false;
+
+				resolve(true);
+			} catch (error) {
+				reject(error);
+			}
+		});
+	};
+
 	const refreshToken = async () => {
 		return new Promise(async (resolve, reject) => {
 			try {

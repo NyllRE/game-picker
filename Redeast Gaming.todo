@@ -7,8 +7,20 @@
         "todo": {
           "content": "add image from capacitor gallery to user data",
           "id": 1674415372520,
-          "level": "secondary",
-          "done": false
+          "level": "default",
+          "done": false,
+          "focus": true
+        }
+      },
+      {
+        "key": 1674684768017,
+        "children": [],
+        "todo": {
+          "content": "ui error handling (auth)",
+          "id": 1674684768017,
+          "level": "success",
+          "done": false,
+          "focus": false
         }
       },
       {
@@ -18,7 +30,8 @@
           "content": "figure out how you set the \"authorization\" header",
           "id": 1674514387923,
           "level": "danger",
-          "done": false
+          "done": true,
+          "focus": false
         }
       }
     ],
@@ -28,7 +41,7 @@
     "virtual": false,
     "showLine": false,
     "playFontSize": 24,
-    "title": "I_dont_think_ill_do_this",
+    "title": "Redeast Gaming",
     "autoSort": false,
     "lang": "en"
   }

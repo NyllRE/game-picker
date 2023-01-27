@@ -2,6 +2,7 @@
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     'ExploreContainer': typeof import("../components/ExploreContainer.vue")['default']
+    'HomeAuth': typeof import("../components/Home/Auth.vue")['default']
     'NuxtWelcome': typeof import("../node_modules/@nuxt/ui-templates/dist/templates/welcome.vue")['default']
     'NuxtLayout': typeof import("../node_modules/nuxt/dist/app/components/layout")['default']
     'NuxtErrorBoundary': typeof import("../node_modules/nuxt/dist/app/components/nuxt-error-boundary")['default']
@@ -109,6 +110,7 @@ declare module '@vue/runtime-core' {
     'Html': typeof import("../node_modules/nuxt/dist/head/runtime/components")['Html']
     'Body': typeof import("../node_modules/nuxt/dist/head/runtime/components")['Body']
     'LazyExploreContainer': typeof import("../components/ExploreContainer.vue")['default']
+    'LazyHomeAuth': typeof import("../components/Home/Auth.vue")['default']
     'LazyNuxtWelcome': typeof import("../node_modules/@nuxt/ui-templates/dist/templates/welcome.vue")['default']
     'LazyNuxtLayout': typeof import("../node_modules/nuxt/dist/app/components/layout")['default']
     'LazyNuxtErrorBoundary': typeof import("../node_modules/nuxt/dist/app/components/nuxt-error-boundary")['default']
@@ -219,6 +221,7 @@ declare module '@vue/runtime-core' {
 }
 
 export const ExploreContainer: typeof import("../components/ExploreContainer.vue")['default']
+export const HomeAuth: typeof import("../components/Home/Auth.vue")['default']
 export const NuxtWelcome: typeof import("../node_modules/@nuxt/ui-templates/dist/templates/welcome.vue")['default']
 export const NuxtLayout: typeof import("../node_modules/nuxt/dist/app/components/layout")['default']
 export const NuxtErrorBoundary: typeof import("../node_modules/nuxt/dist/app/components/nuxt-error-boundary")['default']
@@ -326,6 +329,7 @@ export const Head: typeof import("../node_modules/nuxt/dist/head/runtime/compone
 export const Html: typeof import("../node_modules/nuxt/dist/head/runtime/components")['Html']
 export const Body: typeof import("../node_modules/nuxt/dist/head/runtime/components")['Body']
 export const LazyExploreContainer: typeof import("../components/ExploreContainer.vue")['default']
+export const LazyHomeAuth: typeof import("../components/Home/Auth.vue")['default']
 export const LazyNuxtWelcome: typeof import("../node_modules/@nuxt/ui-templates/dist/templates/welcome.vue")['default']
 export const LazyNuxtLayout: typeof import("../node_modules/nuxt/dist/app/components/layout")['default']
 export const LazyNuxtErrorBoundary: typeof import("../node_modules/nuxt/dist/app/components/nuxt-error-boundary")['default']
