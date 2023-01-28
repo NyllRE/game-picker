@@ -55,10 +55,12 @@ export default () => {
 		return new Promise(async (resolve, reject) => {
 			try {
 				useLoading().value = true;
-				const data = await $fetch(`${config.url}/api/auth/register`, {
+				const registerData = await $fetch(`${config.url}/api/auth/register`, {
 					method: 'POST',
 					body: { username, password },
 				});
+
+				await login({ username, password });
 
 				//==<< TODO: login automatically >>==//
 
@@ -70,10 +72,6 @@ export default () => {
 				// 	})
 				// );
 
-				console.log({
-					id: data.id,
-					name: data.username,
-				});
 				useLoading().value = false;
 
 				resolve(true);
@@ -123,6 +121,7 @@ export default () => {
 
 	return {
 		login,
+		register,
 		useAuthToken,
 		useAuthUser,
 		setToken,

@@ -6,6 +6,11 @@ definePageMeta({
 });
 const { useAuthUser } = useAuth()
 const user = ref(JSON.parse(useAuthUser().value))
+
+watch(useAuthUser(), async (newUser, oldUser) => {
+   user.value = JSON.parse(newUser)
+   console.log("DETECTED CHANGE: ", user.value)
+})
 </script>
 
 <template lang="pug">
