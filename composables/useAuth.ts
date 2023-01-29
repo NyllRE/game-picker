@@ -16,7 +16,6 @@ export default () => {
 	const setUser = (newUser: any) => {
 		const authUser = useAuthUser();
 		authUser.value = newUser;
-		console.log(authUser.value);
 
 		localStorage.setItem('auth_user', newUser);
 	};
@@ -37,10 +36,6 @@ export default () => {
 					})
 				);
 
-				console.log({
-					id: data.user.id,
-					name: data.user.username,
-				});
 				useLoading().value = false;
 
 				resolve(true);
@@ -49,7 +44,6 @@ export default () => {
 			}
 		});
 	};
-
 
 	const register = async ({ username, password }: any) => {
 		return new Promise(async (resolve, reject) => {
@@ -61,16 +55,6 @@ export default () => {
 				});
 
 				await login({ username, password });
-
-				//==<< TODO: login automatically >>==//
-
-				// setToken(data.user.accessToken);
-				// setUser(
-				// 	JSON.stringify({
-				// 		id: data.user.id,
-				// 		name: data.user.username,
-				// 	})
-				// );
 
 				useLoading().value = false;
 
