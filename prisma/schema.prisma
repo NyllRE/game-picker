@@ -27,3 +27,11 @@ model RefreshToken {
   created DateTime @default(now())
   updated DateTime @updatedAt
 }
+
+
+
+model Game {
+  id     String @id @unique @default(uuid()) @map("_id")
+  name   String 
+  rating Float
+}
