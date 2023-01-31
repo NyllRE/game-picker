@@ -3,24 +3,26 @@ import type { Ref } from 'nuxt/dist/app/compat/capi';
 
 export default () => {
 	const config = useAppConfig();
-	const useLoading = () => useState('auth_loading', () => true);
-	const useAuthToken = () => useState('auth_token');
-	const useAuthUser = (): Ref<string | null> =>
-		useState('auth_user', () => localStorage.getItem('auth_user'));
+	const useLoading = () => useState<boolean>('auth_loading', () => true);
+	const useAuthToken = () => useState<string>('auth_token');
+	const useAuthUser = () =>
+		useState<string | null>('auth_user', () =>
+			localStorage.getItem('auth_user')
+		);
 
-	const setToken = (newToken: string) => {
+	const setToken = (newToken: string): void => {
 		const authToken = useAuthToken();
 		authToken.value = newToken;
 	};
 
-	const setUser = (newUser: any) => {
+	const setUser = (newUser: string): void => {
 		const authUser = useAuthUser();
 		authUser.value = newUser;
 
 		localStorage.setItem('auth_user', newUser);
 	};
 
-	const login = async ({ username, password }: any) => {
+	const login = async ({ username, password }: any): Promise<true | string> => {
 		return new Promise(async (resolve, reject) => {
 			try {
 				useLoading().value = true;
@@ -45,7 +47,13 @@ export default () => {
 		});
 	};
 
-	const register = async ({ username, password }: any) => {
+	const register = async ({
+		username,
+		password,
+	}: {
+		username: string;
+		password: string;
+	}): Promise<true | string> => {
 		return new Promise(async (resolve, reject) => {
 			try {
 				useLoading().value = true;
@@ -65,7 +73,7 @@ export default () => {
 		});
 	};
 
-	const refreshToken = async () => {
+	const refreshToken = async (): Promise<true | string> => {
 		return new Promise(async (resolve, reject) => {
 			try {
 				const data = await $fetch(`${config.url}/api/auth/refresh`);
@@ -77,7 +85,7 @@ export default () => {
 		});
 	};
 
-	const initAuth = async () => {
+	const initAuth = async (): Promise<true | string> => {
 		return new Promise(async (resolve, reject) => {
 			try {
 				useLoading().value = true;
@@ -90,7 +98,7 @@ export default () => {
 		});
 	};
 
-	const getUser = () => {
+	const getUser = (): Promise<true | string> => {
 		return new Promise(async (resolve, reject) => {
 			try {
 				const data = await useFetchApi(`${config.url}/api/auth/user`);

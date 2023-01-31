@@ -5,7 +5,7 @@ definePageMeta({
 	alias: ['/', '/tabs'],
 });
 const { useAuthUser } = useAuth()
-const user = ref(JSON.parse(useAuthUser().value))
+const user = ref<{id: string, name: string}>(JSON.parse(useAuthUser().value))
 
 watch(useAuthUser(), async (newUser, oldUser) => {
    user.value = JSON.parse(newUser)
