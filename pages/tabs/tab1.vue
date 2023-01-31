@@ -11,6 +11,7 @@ watch(useAuthUser(), async (newUser, oldUser) => {
    user.value = JSON.parse(newUser)
    console.log("DETECTED CHANGE: ", user.value)
 })
+const isLoading = ref(false);
 </script>
 
 <template lang="pug">
@@ -21,8 +22,13 @@ ion-page
   ion-content(:fullscreen="true")
 
 
-    .loading( v-if="loading" )
-      h1 Loading
+    ion-loading(
+      v-if="loading"
+      :is-open="isOpenRef"
+      cssClass="my-custom-class"
+      message="Please wait..."
+      @didDismiss="loading = false"
+    )
 
     HomeAuth( v-else-if="!user")
 
