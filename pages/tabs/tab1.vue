@@ -1,14 +1,14 @@
 <!-- @format -->
 
-<script setup>
+<script setup lang="ts">
 definePageMeta({
 	alias: ['/', '/tabs'],
 });
 const { useAuthUser } = useAuth()
-const user = ref<{id: string, name: string}>(JSON.parse(useAuthUser().value))
+const user = ref<{id: string, name: string}>(JSON.parse(useAuthUser().value!))
 
 watch(useAuthUser(), async (newUser, oldUser) => {
-   user.value = JSON.parse(newUser)
+   user.value = JSON.parse(newUser!)
    console.log("DETECTED CHANGE: ", user.value)
 })
 const isLoading = ref(false);
@@ -34,8 +34,7 @@ ion-page
 
     .center( v-else )
       h1 Welcome {{ user.name }}!
-      img( src="/icon.png" )
-      ion-button( @click="" ) change image
+      HomeImageGen
 </template>
 
 

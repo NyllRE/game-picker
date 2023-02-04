@@ -32,6 +32,8 @@
 		"@capacitor/keyboard": "4.1.0",
 		"@capacitor/status-bar": "4.1.1",
 		"@capacitor/storage": "^1.2.5",
+		"@dicebear/collection": "^5.3.0",
+		"@dicebear/core": "^5.3.0",
 		"@ionic/vue": "^6.4.2",
 		"@prisma/client": "4.9.0",
 		"@types/jsonwebtoken": "^9.0.1",

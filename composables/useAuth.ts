@@ -112,15 +112,15 @@ export default () => {
 	};
 
 	return {
-		login,
-		register,
 		useAuthToken,
+		refreshToken,
 		useAuthUser,
+		useLoading,
+		register,
+		initAuth,
 		setToken,
 		setUser,
-		refreshToken,
-		useLoading,
-		initAuth,
 		getUser,
+		login,
 	};
 };
