@@ -1,5 +1,6 @@
 /** @format */
 
+
 export default (url: string, options: Options = {}) => {
 	const { useAuthToken } = useAuth();
 
@@ -14,4 +15,6 @@ export default (url: string, options: Options = {}) => {
 
 interface Options {
 	headers?: {};
+	method?: 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE';
+	body?: any;
 }

@@ -3,8 +3,8 @@ POST http://localhost:3000/api/auth/register
 content-type: application/json
 
 {
-	"username": "test2",
-	"password": "test"
+	"username": "test",
+	"password": "tester123"
 }
 
 ###
@@ -24,3 +24,14 @@ GET http://localhost:3000/api/auth/refresh
 ###
 
 GET http://localhost:3000/api/auth/user
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImIxZWE2NmVhLWVlODQtNDI4OC1hYjBiLTExNTJjODY4MTBmZCIsImlhdCI6MTY3NTYyNTg0MCwiZXhwIjoxNjc1NjI2NDQwfQ.Ker3BeB2h3AtXNVeuiIvHbG9RaNZxhqpmU8Rw0zWuAg
+
+###
+
+PUT http://localhost:3000/api/auth/image
+Content-Type: application/json
+
+{
+	"userId": "b1ea66ea-ee84-4288-ab0b-1152c86810fd",
+	"imageId": "adgfv"
+}

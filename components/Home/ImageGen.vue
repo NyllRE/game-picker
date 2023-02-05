@@ -2,14 +2,6 @@
 <script setup lang="ts">
 import { alertController } from '@ionic/vue';
 const { avatarGen } = useCustomImage()
-
-const imgSeed = ref('Rio')
-const svg = ref()
-onMounted(() => {
-   const avatar = avatarGen(imgSeed.value)
-   
-   svg.value = avatar;
-})
 function randomString(): string {
   let possibleChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_";
   let result = "";
@@ -18,6 +10,14 @@ function randomString(): string {
   }
   return result;
 }  
+
+const imgSeed = ref( randomString() )
+const svg = ref()
+onMounted(() => {
+   const avatar = avatarGen(imgSeed.value)
+   
+   svg.value = avatar;
+})
 
 const presentAlert = async () => {
    const alert = await alertController.create({
@@ -32,6 +32,7 @@ const randomAvatar = (): void => {
    imgSeed.value = randomString();
    svg.value = avatarGen(imgSeed.value)
 }
+
 
 
 </script>

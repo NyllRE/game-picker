@@ -21,3 +21,13 @@ export const getUserByUsername = async (username: string) => {
 export const getUserById = async (id: string) => {
 	return await prisma.user.findUnique({ where: { id } });
 };
+
+
+export const addImageIdToUser = async (id: string, imageId: string) => {
+	return await prisma.user.update({
+		where: { id },
+		data: {
+			imageId: imageId,
+		},
+	});
+};

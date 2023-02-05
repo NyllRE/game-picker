@@ -1,5 +1,4 @@
 /** @format */
-import type { Ref } from 'nuxt/dist/app/compat/capi';
 
 export default () => {
 	const config = useAppConfig();
@@ -22,7 +21,7 @@ export default () => {
 		localStorage.setItem('auth_user', newUser);
 	};
 
-	const login = async ({ username, password }: any): Promise<true | string> => {
+	const login = async ({ username, password }: any): apiRequest => {
 		return new Promise(async (resolve, reject) => {
 			try {
 				useLoading().value = true;
@@ -53,7 +52,7 @@ export default () => {
 	}: {
 		username: string;
 		password: string;
-	}): Promise<true | string> => {
+	}): apiRequest => {
 		return new Promise(async (resolve, reject) => {
 			try {
 				useLoading().value = true;
@@ -73,7 +72,7 @@ export default () => {
 		});
 	};
 
-	const refreshToken = async (): Promise<true | string> => {
+	const refreshToken = async (): apiRequest => {
 		return new Promise(async (resolve, reject) => {
 			try {
 				const data = await $fetch(`${config.url}/api/auth/refresh`);
@@ -85,7 +84,7 @@ export default () => {
 		});
 	};
 
-	const initAuth = async (): Promise<true | string> => {
+	const initAuth = async (): apiRequest => {
 		return new Promise(async (resolve, reject) => {
 			try {
 				useLoading().value = true;
@@ -98,7 +97,7 @@ export default () => {
 		});
 	};
 
-	const getUser = (): Promise<true | string> => {
+	const getUser = (): apiRequest => {
 		return new Promise(async (resolve, reject) => {
 			try {
 				const data = await useFetchApi(`${config.url}/api/auth/user`);
@@ -111,10 +110,29 @@ export default () => {
 		});
 	};
 
+	const changeImage = ({ imageId }: { imageId: string }): apiRequest => {
+		return new Promise(async (resolve, reject) => {
+			try {
+				const data = await useFetchApi(`${config.url}/api/auth/image`, {
+					method: 'PUT',
+					body: {
+						userId: JSON.parse(useAuthUser().value!).id,
+						imageId: imageId,
+					},
+				});
+
+				resolve(true);
+			} catch (error) {
+				reject(error);
+			}
+		});
+	};
+
 	return {
 		useAuthToken,
 		refreshToken,
 		useAuthUser,
+		changeImage,
 		useLoading,
 		register,
 		initAuth,
@@ -124,3 +142,5 @@ export default () => {
 		login,
 	};
 };
+
+type apiRequest = Promise<true | string>;

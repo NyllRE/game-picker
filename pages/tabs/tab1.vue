@@ -9,9 +9,8 @@ const user = ref<{id: string, name: string}>(JSON.parse(useAuthUser().value!))
 
 watch(useAuthUser(), async (newUser, oldUser) => {
    user.value = JSON.parse(newUser!)
-   console.log("DETECTED CHANGE: ", user.value)
 })
-const isLoading = useLoading();
+
 </script>
 
 <template lang="pug">
@@ -20,11 +19,11 @@ ion-page
     ion-toolbar
       ion-title Home
   ion-content(:fullscreen="true")
-
+    p {{ useLoading() }}
 
     ion-loading(
-      v-if="useLoading().value"
-      :is-open="useLoading().value"
+      v-if="false"
+      :is-open="useLoading()"
       cssClass="my-custom-class"
       message="Please wait..."
       @didDismiss="loading = false"
