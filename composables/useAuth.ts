@@ -3,7 +3,7 @@ import type { Ref } from 'nuxt/dist/app/compat/capi';
 
 export default () => {
 	const config = useAppConfig();
-	const useLoading = () => useState<boolean>('auth_loading', () => true);
+	const useLoading = () => useState<boolean>('auth_loading', () => false);
 	const useAuthToken = () => useState<string>('auth_token');
 	const useAuthUser = () =>
 		useState<string | null>('auth_user', () =>

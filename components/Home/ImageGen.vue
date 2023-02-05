@@ -1,15 +1,15 @@
 
 <script setup lang="ts">
-import { createAvatar } from '@dicebear/core';
-import { icons } from '@dicebear/collection';
+import { alertController } from '@ionic/vue';
+const { avatarGen } = useCustomImage()
 
-const avatar = createAvatar(icons, {
-  seed: "Rio",
-  radius: 5
-});
-
-const svg = ref(avatar.toString())
-
+const imgSeed = ref('Rio')
+const svg = ref()
+onMounted(() => {
+   const avatar = avatarGen(imgSeed.value)
+   
+   svg.value = avatar;
+})
 function randomString(): string {
   let possibleChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_";
   let result = "";
@@ -17,37 +17,61 @@ function randomString(): string {
     result += possibleChars.charAt(Math.floor(Math.random() * possibleChars.length));
   }
   return result;
+}  
+
+const presentAlert = async () => {
+   const alert = await alertController.create({
+      header: 'Alert',
+      message: imgSeed.value,
+      buttons: ['OK'],
+   });
+
+   await alert.present();
+};
+const randomAvatar = (): void => {
+   imgSeed.value = randomString();
+   svg.value = avatarGen(imgSeed.value)
 }
 
-function randomAvatar(): void {
-   svg.value = createAvatar(icons, {
-      seed: randomString(),
-      radius: 5
-   }).toString();
-}
-
-console.log(svg.value);
 
 </script>
 
 <template lang="pug">
-
-.center
-   span.profile-image( v-html="svg" )
-   ion-button( @click="randomAvatar" ) change image
+   
+ion-content.center
+   img.profile-image( :src="svg" )
+   
+ion-footer.footer.ion-no-border( :translucent="true" )
+   ion-toolbar.center
+      .image-toolbar
+         ion-button( @click="randomAvatar()" shape="round" fill="outline" )
+            | change image
+            ion-ripple-effect
+         ion-button( shape="round" @click="presentAlert" )
+            | Accept
+            ion-ripple-effect
 
 </template>
 
 
 <style lang="scss">
-
-span.profile-image {
-
-   svg {
-      height: 200px;
-      width: 200px;
-   }
-
+img.profile-image {
+   padding-top: 4em;
+   width: 70%;
 }
 
+
+.footer {
+   position: fixed;
+   bottom: 0;
+   padding-left: 10%;
+   padding-bottom: 20%;
+   width: 90%;
+   min-height: 5em;
+}
+
+.image-toolbar {
+   display: flex;
+   flex-direction: column;
+}
 </style>

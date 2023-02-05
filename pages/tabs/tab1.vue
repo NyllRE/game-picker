@@ -4,14 +4,14 @@
 definePageMeta({
 	alias: ['/', '/tabs'],
 });
-const { useAuthUser } = useAuth()
+const { useAuthUser, useLoading } = useAuth()
 const user = ref<{id: string, name: string}>(JSON.parse(useAuthUser().value!))
 
 watch(useAuthUser(), async (newUser, oldUser) => {
    user.value = JSON.parse(newUser!)
    console.log("DETECTED CHANGE: ", user.value)
 })
-const isLoading = ref(false);
+const isLoading = useLoading();
 </script>
 
 <template lang="pug">
@@ -23,16 +23,20 @@ ion-page
 
 
     ion-loading(
-      v-if="loading"
-      :is-open="isOpenRef"
+      v-if="useLoading().value"
+      :is-open="useLoading().value"
       cssClass="my-custom-class"
       message="Please wait..."
       @didDismiss="loading = false"
     )
 
-    HomeAuth( v-else-if="!user")
+    UIModal( v-else-if="!user" :open="!user" title="Accounts" )
+      HomeAuth
 
-    .center( v-else )
+    UIModal( v-else :open="true" title="Choose Image" )
+      HomeImageGen
+
+    //- .center( v-else )
       h1 Welcome {{ user.name }}!
       HomeImageGen
 </template>
