@@ -19,7 +19,7 @@ export default defineEventHandler(async (event) => {
 	if (!isHandledByMiddleware) return;
 
 	const token = event.node.req.headers['authorization']?.split(' ')[1]!;
-	console.log('middleware: ', event.node.req.headers);
+	// console.log('middleware: ', event.node.req.headers);
 
 	const decoded = decodeAccessToken(token);
 

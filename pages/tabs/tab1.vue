@@ -11,6 +11,9 @@ watch(useAuthUser(), async (newUser, oldUser) => {
    user.value = JSON.parse(newUser!)
 })
 
+onMounted(() => {
+  useLoading().value = false
+})
 </script>
 
 <template lang="pug">
@@ -19,17 +22,15 @@ ion-page
     ion-toolbar
       ion-title Home
   ion-content(:fullscreen="true")
-    p {{ useLoading() }}
 
     ion-loading(
-      v-if="false"
-      :is-open="useLoading()"
+      :is-open="useLoading().value"
       cssClass="my-custom-class"
-      message="Please wait..."
+      :message="useLoading().value"
       @didDismiss="loading = false"
     )
 
-    UIModal( v-else-if="!user" :open="!user" title="Accounts" )
+    UIModal( v-if="!user" :open="!user" title="Accounts" )
       HomeAuth
 
     UIModal( v-else :open="true" title="Choose Image" )

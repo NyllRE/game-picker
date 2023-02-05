@@ -1,6 +1,9 @@
 
 <script setup lang="ts">
 import { alertController } from '@ionic/vue';
+
+const { changeImage } = useAuth()
+
 const { avatarGen } = useCustomImage()
 function randomString(): string {
   let possibleChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_";
@@ -19,10 +22,10 @@ onMounted(() => {
    svg.value = avatar;
 })
 
-const presentAlert = async () => {
+const presentAlert = async (message: any) => {
    const alert = await alertController.create({
       header: 'Alert',
-      message: imgSeed.value,
+      message: JSON.stringify(message),
       buttons: ['OK'],
    });
 
@@ -33,7 +36,10 @@ const randomAvatar = (): void => {
    svg.value = avatarGen(imgSeed.value)
 }
 
-
+const applyImage = async () => {
+   const res = await changeImage(imgSeed.value)
+   await presentAlert(res)
+}
 
 </script>
 
@@ -48,7 +54,7 @@ ion-footer.footer.ion-no-border( :translucent="true" )
          ion-button( @click="randomAvatar()" shape="round" fill="outline" )
             | change image
             ion-ripple-effect
-         ion-button( shape="round" @click="presentAlert" )
+         ion-button( shape="round" @click="applyImage" )
             | Accept
             ion-ripple-effect
 

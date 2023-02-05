@@ -110,7 +110,7 @@ export default () => {
 		});
 	};
 
-	const changeImage = ({ imageId }: { imageId: string }): apiRequest => {
+	const changeImage = (imageId: string): apiRequest => {
 		return new Promise(async (resolve, reject) => {
 			try {
 				const data = await useFetchApi(`${config.url}/api/auth/image`, {
@@ -121,7 +121,7 @@ export default () => {
 					},
 				});
 
-				resolve(true);
+				resolve(data);
 			} catch (error) {
 				reject(error);
 			}
