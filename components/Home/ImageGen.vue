@@ -38,6 +38,8 @@ const randomAvatar = (): void => {
 
 const applyImage = async () => {
    const res = await changeImage(imgSeed.value)
+   console.log(res);
+   
    await presentAlert(res)
 }
 

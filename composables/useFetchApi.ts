@@ -1,10 +1,10 @@
 /** @format */
 
 
-export default (url: string, options: Options = {}) => {
+export default async (url: string, options: Options = {}) => {
 	const { useAuthToken } = useAuth();
 
-	return $fetch(url, {
+	return await $fetch(url, {
 		...options,
 		headers: {
 			...options.headers,

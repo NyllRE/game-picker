@@ -40,8 +40,8 @@ export default () => {
 				useLoading().value = false;
 
 				resolve(true);
-			} catch (error) {
-				reject(error);
+			} catch (error: any) {
+				reject([error.status, error]);
 			}
 		});
 	};
@@ -123,6 +123,8 @@ export default () => {
 
 				resolve(data);
 			} catch (error) {
+				console.log(error);
+
 				reject(error);
 			}
 		});

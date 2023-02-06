@@ -16,10 +16,12 @@ const form = reactive({
 })
 
 const loginUser = () => {
-  login({
+  const status = login({
     username: form.username,
     password: form.password,
   })
+
+   if (status) return;
 }
 
 const registerUser = () => {

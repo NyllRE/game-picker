@@ -30,10 +30,10 @@ ion-page
       @didDismiss="loading = false"
     )
 
-    UIModal( v-if="!user.imageId" :open="!user" title="Accounts" )
+    UIModal( v-if="!user" :open="!user" title="Accounts" )
       HomeAuth
 
-    UIModal( v-else :open="true" title="Choose Image" )
+    UIModal( v-else-if="!user.imageId" :open="true" title="Choose Image" )
       HomeImageGen
 
     //- .center( v-else )
