@@ -16,7 +16,7 @@ const form = reactive({
 })
 
 const loginUser = () => {
-  const status = login({
+  const { status, error } = login({
     username: form.username,
     password: form.password,
   })
@@ -31,6 +31,7 @@ const registerUser = () => {
    })
 }
 
+//=>> use async data (useAsyncData)
 const isLogin = ref(false)
 </script>
 

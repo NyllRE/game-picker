@@ -21,6 +21,15 @@ export default () => {
 		localStorage.setItem('auth_user', newUser);
 	};
 
+	/*
+	await ofetch('/api', {
+		async onResponse({ request, response, options }) {
+			// Log response
+			console.log('[fetch response]', request, response.status, response.body)
+		}
+	})
+	*/
+
 	const login = async ({ username, password }: any): apiRequest => {
 		return new Promise(async (resolve, reject) => {
 			try {
@@ -38,10 +47,17 @@ export default () => {
 				);
 
 				useLoading().value = false;
+				console.log(JSON.stringify(data));
 
-				resolve(true);
+				resolve({
+					status: 200,
+					response: true,
+				});
 			} catch (error: any) {
-				reject([error.status, error]);
+				reject({
+					status: error.status,
+					response: error,
+				});
 			}
 		});
 	};
@@ -145,4 +161,4 @@ export default () => {
 	};
 };
 
-type apiRequest = Promise<true | string>;
+type apiRequest = Promise<{ status: number; response: string | true }>;
