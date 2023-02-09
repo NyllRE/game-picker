@@ -15,13 +15,16 @@ const form = reactive({
   password: '',
 })
 
-const loginUser = () => {
-  const { status, error } = login({
+const loginUser = async () => {
+  const { status, response } = await login({
     username: form.username,
     password: form.password,
   })
 
-   if (status) return;
+   if (status == 200) return;
+   else {
+      
+   }
 }
 
 const registerUser = () => {

@@ -8,8 +8,9 @@
           "content": "add image from capacitor gallery to user data",
           "id": 1674415372520,
           "level": "default",
-          "done": false,
-          "focus": true
+          "done": true,
+          "focus": false,
+          "end": 1675973941678
         }
       },
       {
@@ -19,8 +20,9 @@
           "content": "ui error handling (auth)",
           "id": 1674684768017,
           "level": "success",
-          "done": false,
-          "focus": false
+          "done": true,
+          "focus": false,
+          "end": 1675973946524
         }
       },
       {
@@ -53,6 +55,8 @@
     "playFontSize": 24,
     "title": "Redeast Gaming",
     "autoSort": false,
-    "lang": "en"
+    "showEndTime": false,
+    "lang": "en",
+    "version": "1675973946589"
   }
 }

@@ -9,6 +9,7 @@ import { getUserById } from '~~/server/db/users';
 import { decodeAccessToken } from '~~/server/utils/jwt';
 
 export default defineEventHandler(async (event) => {
+	//=>> checking if the url matches the specified endpoints
 	const endpoints = ['/api/auth/user'];
 
 	const isHandledByMiddleware = endpoints.some((endpoint) => {
@@ -17,6 +18,8 @@ export default defineEventHandler(async (event) => {
 	});
 
 	if (!isHandledByMiddleware) return;
+
+	//=>> checking the token from the headers
 
 	const token = event.node.req.headers['authorization']?.split(' ')[1]!;
 	// console.log('middleware: ', event.node.req.headers);

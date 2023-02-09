@@ -1,41 +1,64 @@
-<script setup lang="ts">import { alertController } from '@ionic/vue';
+<!-- @format -->
 
+<script setup lang="ts">
+import { alertController } from '@ionic/vue';
 
-const items = ref([
-  {
-    title: 'Create idea',
-    description: 'Create a new idea',
-    badge: '5 days'
-  }
-])
-
-const addTodo = async () => {
-  console.log(items.value);
-  const alert = await alertController.create({
-    header: 'Please enter your todo',
-    buttons: ['OK'],
-    inputs: [
-      {
-        placeholder: 'Title',
-      },
-      {
-        type: 'textarea',
-        placeholder: 'Description',
-        // attributes: {
-        //   maxlength: 8,
-        // },
-      },
-      {
-        placeholder: 'Badge',
-      },
-    ],
-  });
-  await alert.present();
-
+interface todoItem {
+  title: string
+  description: string
+  badge: string
 }
 
-</script>
+const items = useState('todo_items', () => [
+	{
+		title: "don't use this",
+		description: 'It will not be saved',
+		badge: 'uselessville',
+	},
+])
 
+const addItem = (item: todoItem) => {
+  items.value.push(item)
+}
+
+
+const addTodo = async () => {
+	const alert = await alertController.create({
+		header: "Please don't enter an item",
+		inputs: [
+      {
+        name: 'title',
+				placeholder: 'Title',
+			},
+			{
+        name: 'description',
+				type: 'textarea',
+				placeholder: 'Description',
+				// attributes: {
+				//   maxlength: 8,
+				// },
+			},
+			{
+        name: 'badge',
+				placeholder: 'Badge',
+			},
+		],
+		buttons: [
+			{
+				text: 'Cancel',
+				role: 'cancel',
+				cssClass: 'secondary',
+				handler: () => console.log('Confirm Cancel')
+			},
+			{
+				text: 'Ok',
+				handler: (item: todoItem) => addItem(item)
+			},
+		],
+	});
+	await alert.present();
+};
+</script>
 
 <template lang="pug">
 ion-page
@@ -50,15 +73,21 @@ ion-page
         ion-title(size="large")
           | Todo List
     ion-list
-      ion-item( v-for="item in items" :key="item.title" )
-        ion-checkbox(slot="start")
-        ion-label
-          h1 {{ item.title }}
-          ion-note {{ item.description }}
-        ion-badge(slot="end" color="success")
-          | {{ item.badge }}
+      ion-item-sliding
+        ion-item( v-for="item in items" :key="item.title" )
+          ion-checkbox(slot="start")
+          ion-label
+            h1 {{ item.title }}
+            ion-note {{ item.description }}
+          ion-badge(slot="end" color="success")
+            | {{ item.badge }}
+            
+        ion-item-options( side="start" )
+          ion-item-option useless
+        ion-item-options( side="end" ) 
+          ion-item-option( color="warning" ) also useless
+
     ion-fab(vertical="bottom" horizontal="center" slot="fixed")
       ion-fab-button(@click="addTodo()")
         ion-icon(:icon="ioniconsAdd")
 </template>
-
