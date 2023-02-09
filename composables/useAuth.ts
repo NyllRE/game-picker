@@ -140,7 +140,7 @@ export default () => {
 	const changeImage = (imageId: string): apiRequest => {
 		return new Promise(async (resolve, reject) => {
 			try {
-				const data = await useFetchApi(`${config.url}/api/auth/image`, {
+				await useFetchApi(`${config.url}/api/auth/image`, {
 					method: 'PUT',
 					body: {
 						userId: JSON.parse(useAuthUser().value!).id,
@@ -148,9 +148,19 @@ export default () => {
 					},
 				})
 					.then((response) => {
+						const user = JSON.parse(useAuthUser().value!);
+
+						setUser(
+							JSON.stringify({
+								id: user.id,
+								name: user.name,
+								imageId: imageId,
+							})
+						);
+
 						resolve({
 							status: 200,
-							response: data,
+							response: response,
 						});
 					})
 					.catch((err) => {

@@ -13,6 +13,8 @@ watch(useAuthUser(), async (newUser, oldUser) => {
 
 onMounted(() => {
   useLoading().value = false
+  console.log(user.value);
+  
 })
 </script>
 
@@ -36,9 +38,8 @@ ion-page
     UIModal( v-else-if="!user.imageId" :open="true" title="Choose Image" )
       HomeImageGen
 
-    //- .center( v-else )
+    .center( v-else )
       h1 Welcome {{ user.name }}!
-      HomeImageGen
 </template>
 
 
