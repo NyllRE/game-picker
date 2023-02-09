@@ -64,8 +64,6 @@ const addTodo = async () => {
 ion-page
   ion-header(translucent)
     ion-toolbar
-      ion-thumbnail(slot="start")
-        ion-img(src="/icon.png")
       ion-title Nuxt Ionic
   ion-content(:fullscreen="true")
     ion-header(collapse="condense")
@@ -73,8 +71,8 @@ ion-page
         ion-title(size="large")
           | Todo List
     ion-list
-      ion-item-sliding
-        ion-item( v-for="item in items" :key="item.title" )
+      ion-item-sliding( v-for="item in items" :key="item.title" )
+        ion-item
           ion-checkbox(slot="start")
           ion-label
             h1 {{ item.title }}
@@ -83,9 +81,14 @@ ion-page
             | {{ item.badge }}
             
         ion-item-options( side="start" )
-          ion-item-option useless
+          ion-item-option( expandable )
+            ion-icon( slot="start" :icon="ioniconsTrash" )
+            | useless
+				
+          ion-item-option( color="secondary" ) kinda useless
         ion-item-options( side="end" ) 
-          ion-item-option( color="warning" ) also useless
+          ion-item-option( color="danger" ) extra useless
+          ion-item-option( color="warning" ) also useles
 
     ion-fab(vertical="bottom" horizontal="center" slot="fixed")
       ion-fab-button(@click="addTodo()")

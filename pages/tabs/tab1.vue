@@ -13,8 +13,6 @@ watch(useAuthUser(), async (newUser, oldUser) => {
 
 onMounted(() => {
   useLoading().value = false
-  console.log(user.value);
-  
 })
 </script>
 
