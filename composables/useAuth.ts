@@ -47,7 +47,6 @@ export default () => {
 				);
 
 				useLoading().value = false;
-				console.log(JSON.stringify(data));
 
 				resolve({
 					status: 200,
@@ -81,7 +80,10 @@ export default () => {
 
 				useLoading().value = false;
 
-				resolve(true);
+				resolve({
+					status: 200,
+					response: true,
+				});
 			} catch (error) {
 				reject(error);
 			}
@@ -93,7 +95,10 @@ export default () => {
 			try {
 				const data = await $fetch(`${config.url}/api/auth/refresh`);
 				setToken(data.accessToken);
-				resolve(true);
+				resolve({
+					status: 200,
+					response: true,
+				});
 			} catch (error) {
 				reject(error);
 			}
@@ -106,7 +111,10 @@ export default () => {
 				useLoading().value = true;
 				await refreshToken();
 				useLoading().value = false;
-				resolve(true);
+				resolve({
+					status: 200,
+					response: true,
+				});
 			} catch (error) {
 				reject(error);
 			}
@@ -119,7 +127,10 @@ export default () => {
 				const data = await useFetchApi(`${config.url}/api/auth/user`);
 
 				setUser(data.user);
-				resolve(true);
+				resolve({
+					status: 200,
+					response: true,
+				});
 			} catch (error) {
 				reject(error);
 			}
@@ -135,13 +146,23 @@ export default () => {
 						userId: JSON.parse(useAuthUser().value!).id,
 						imageId: imageId,
 					},
-				});
+				})
+					.then((response) => {
+						resolve({
+							status: 200,
+							response: data,
+						});
+					})
+					.catch((err) => {
+						console.log(err);
 
-				resolve(data);
+						reject({
+							status: 400,
+							response: 'There was a connection error',
+						});
+					});
 			} catch (error) {
 				console.log(error);
-
-				reject(error);
 			}
 		});
 	};
@@ -161,4 +182,4 @@ export default () => {
 	};
 };
 
-type apiRequest = Promise<{ status: number; response: string | true }>;
+type apiRequest = Promise<{ status: number; response: any }>;

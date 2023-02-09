@@ -37,10 +37,14 @@ const randomAvatar = (): void => {
 }
 
 const applyImage = async () => {
-   const res = await changeImage(imgSeed.value)
-   console.log(res);
-   
-   await presentAlert(res)
+   await changeImage(imgSeed.value).then( async (res) => {
+      await presentAlert(res.response.imageId)
+   }).catch(async (err) => {
+      await presentAlert(err.response)
+   })
+
+   // if (status === 200) {
+   // }
 }
 
 </script>
