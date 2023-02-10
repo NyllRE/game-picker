@@ -21,14 +21,12 @@ export default () => {
 		localStorage.setItem('auth_user', newUser);
 	};
 
-	/*
-	await ofetch('/api', {
-		async onResponse({ request, response, options }) {
-			// Log response
-			console.log('[fetch response]', request, response.status, response.body)
-		}
-	})
-	*/
+	const newSetUser = (newUser: string): void => {
+		const authUser = useAuthUser();
+		authUser.value = JSON.stringify(newUser);
+
+		localStorage.setItem('auth_user', JSON.stringify(newUser));
+	};
 
 	const login = async ({ username, password }: any): apiRequest => {
 		return new Promise(async (resolve, reject) => {
@@ -52,6 +50,29 @@ export default () => {
 					status: 200,
 					response: true,
 				});
+			} catch (error: any) {
+				reject({
+					status: error.status,
+					response: error,
+				});
+			}
+		});
+	};
+
+	const logout = async (): apiRequest => {
+		return new Promise(async (resolve, reject) => {
+			try {
+				useLoading().value = true;
+				const data = await useFetchApi(`${config.url}/api/auth/logout`, {
+					method: 'POST',
+				});
+				newSetUser('');
+
+				resolve({
+					status: 200,
+					response: true,
+				});
+				useLoading().value = false;
 			} catch (error: any) {
 				reject({
 					status: error.status,
@@ -188,6 +209,7 @@ export default () => {
 		setToken,
 		setUser,
 		getUser,
+		logout,
 		login,
 	};
 };
