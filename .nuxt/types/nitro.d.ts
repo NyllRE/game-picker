@@ -5,6 +5,7 @@ declare module 'nitropack' {
     '/api/auth/user': Awaited<ReturnType<typeof import('../../server/api/auth/user.get').default>>
     '/api/auth/register': Awaited<ReturnType<typeof import('../../server/api/auth/register.post').default>>
     '/api/auth/refresh': Awaited<ReturnType<typeof import('../../server/api/auth/refresh.get').default>>
+    '/api/auth/logout': Awaited<ReturnType<typeof import('../../server/api/auth/logout.post').default>>
     '/api/auth/login': Awaited<ReturnType<typeof import('../../server/api/auth/login.post').default>>
     '/api/auth/image': Awaited<ReturnType<typeof import('../../server/api/auth/image').default>>
     '/__nuxt_error': Awaited<ReturnType<typeof import('../../node_modules/nuxt/dist/core/runtime/nitro/renderer').default>>

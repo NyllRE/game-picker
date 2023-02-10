@@ -35,4 +35,12 @@ export default defineNuxtConfig({
 			headers: { 'Access-Control-Allow-Origin': '*' },
 		},
 	},
+	vite: {
+		/* options for vite */
+		// ssr: true // enable unstable server-side rendering for development (false by default)
+		// experimentWarning: false // hide experimental warning message (disabled by default for tests)
+		vue: {
+			reactivityTransform: true,
+		},
+	},
 });

@@ -1,41 +1,50 @@
 <!-- @format -->
 
-<script setup>
+<script setup lang="ts">
+import useAvatar from '~~/composables/useAvatar';
 
-const data = ref('fetching');
+const { useAuthUser, useLoading, logout } = useAuth()
+
+let user = $ref<{id: string, name: string, imageId: string}>(JSON.parse(useAuthUser().value!))
+
+watch(useAuthUser(), async (newUser, oldUser): Promise<void> => {
+	user = await JSON.parse(newUser!)
+})
+
+let profile = $ref('')
+
 onMounted(async () => {
-	data.value = await $fetch('/api/count', {
-		mode: 'no-cors'
-	})
-		.then((res) => res.api)
-		.catch((e) => 'error: ' + e);
-});
+	user = JSON.parse(useAuthUser().value!)
+	profile = useAvatar(user.imageId)
+})
 
-const url = ref('');
-const tryInternet = async () => {
-	// fetch data from url and return it
-	data.value = await useFetch(url.value)
-		.then(res => {
-			return res.data;
-		})
-		.catch((e) => 'error: ' + e)
-};
 </script>
 
 <template lang="pug">
 IonPage
 	ion-header
 		ion-toolbar
-			ion-title API example
+			ion-title Profile
 	IonContent(:fullscreen="true")
-		.ion-padding
-			h1 {{ data }}
-			IonInput( v-model="url" placeholder="try")
-			IonButton( expand="block" @click="tryInternet" ) Get
+		.center( v-if="user" )
+			img.profile-image( :src="profile" )
+			h1
+				b {{ user.name }}
+		IonButton( @click="logout" color="danger" ) Logout
+
 </template>
 
 <style scoped>
+.center {
+  display: grid;
+  place-items: center;
+  text-align: center;
+}
 .ion-padding {
 	padding: 1em;
+}
+img.profile-image {
+   padding-top: 4em;
+   width: 70%;
 }
 </style>

@@ -1,10 +1,11 @@
 
 <script setup lang="ts">
 import { alertController } from '@ionic/vue';
+import useAvatar from '~~/composables/useAvatar';
 
 const { changeImage } = useAuth()
 
-const { avatarGen } = useCustomImage()
+
 function randomString(): string {
   let possibleChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_";
   let result = "";
@@ -17,8 +18,7 @@ function randomString(): string {
 const imgSeed = ref( randomString() )
 const svg = ref()
 onMounted(() => {
-   const avatar = avatarGen(imgSeed.value)
-   
+const avatar = useAvatar(imgSeed.value)
    svg.value = avatar;
 })
 
@@ -33,7 +33,7 @@ const presentAlert = async (message: any) => {
 };
 const randomAvatar = (): void => {
    imgSeed.value = randomString();
-   svg.value = avatarGen(imgSeed.value)
+   svg.value = useAvatar(imgSeed.value)
 }
 
 const applyImage = async () => {

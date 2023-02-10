@@ -1,6 +1,7 @@
 /** @format */
 
 import { User } from '@prisma/client';
+import { H3Event } from 'h3';
 import jwt from 'jsonwebtoken';
 
 const config = useRuntimeConfig();
@@ -43,3 +44,9 @@ export const decodeAccessToken = (accessToken: string): any => {
 		return null;
 	}
 };
+
+export const sendRefreshToken = (event: H3Event, token: string | null) => {
+	setCookie(event, 'refresh_token', token!, {
+		httpOnly: true,
+	});
+}; 
