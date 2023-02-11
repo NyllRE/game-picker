@@ -66,7 +66,7 @@ export default () => {
 				const data = await useFetchApi(`${config.url}/api/auth/logout`, {
 					method: 'POST',
 				});
-				newSetUser('');
+				newSetUser(null);
 
 				resolve({
 					status: 200,
