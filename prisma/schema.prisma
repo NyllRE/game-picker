@@ -6,17 +6,18 @@ generator client {
 }
 
 datasource db {
-  provider     = "sqlite"
-  url          = env("DATABASE_URL")
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
 }
 
 model User {
   id           String         @id @unique @default(uuid()) @map("_id")
   username     String         @unique
   password     String
-  imageId      String? 
+  imageId      String?
   updated      DateTime       @updatedAt
   refreshToken RefreshToken[]
+  GameRating   GameRating[]
 }
 
 model RefreshToken {
@@ -29,10 +30,16 @@ model RefreshToken {
   updated DateTime @updatedAt
 }
 
-
-
 model Game {
+  id      String       @id @unique @default(uuid()) @map("_id")
+  name    String
+  rating  Float
+  ratings GameRating[]
+}
+
+model GameRating {
   id     String @id @unique @default(uuid()) @map("_id")
-  name   String 
-  rating Float
+  userId String @default(uuid())
+  user   User   @relation(fields: [userId], references: [id])
+  game   Game   @relation(fields: [id], references: [id]) //! FIX !!!
 }
