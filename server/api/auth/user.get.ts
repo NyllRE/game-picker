@@ -1,5 +1,7 @@
 /** @format */
 
+import { addRole } from '~~/server/db/modifySchema';
+
 export default defineEventHandler(async (event) => {
 	const user = event.context.auth?.user;
 

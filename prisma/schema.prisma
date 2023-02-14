@@ -11,13 +11,22 @@ datasource db {
 }
 
 model User {
-  id           String         @id @unique @default(uuid()) @map("_id")
-  username     String         @unique
-  password     String
-  imageId      String?
-  updated      DateTime       @updatedAt
-  refreshToken RefreshToken[]
-  GameRating   GameRating[]
+  id            String         @id @unique @default(uuid()) @map("_id")
+  username      String         @unique
+  password      String
+  imageId       String?
+  created       DateTime       @default(now())
+  updated       DateTime       @updatedAt
+  roleName      String         @default("BASIC")
+  role          Role           @relation(fields: [roleName], references: [name])
+  favoriteGames Game[]         @relation("FavoriteGames")
+  GameRatings   GameRating[]   @relation("GameRatings")
+  refreshToken  RefreshToken[]
+}
+
+model Role {
+  name String @unique @default("BASIC")
+  User User[]
 }
 
 model RefreshToken {
@@ -30,17 +39,29 @@ model RefreshToken {
   updated DateTime @updatedAt
 }
 
+//=>> see the last changes, do a relational field for favorite games
+
 model Game {
-  id      String       @id @unique @default(uuid()) @map("_id")
-  name    String
-  rating  Float
-  ratings GameRating[]
+  id            String       @id @unique @default(uuid()) @map("_id")
+  name          String       @unique
+  gameId        String       @default(uuid())
+  ratings       GameRating[] @relation("GameRated")
+  favoritedBy   User?        @relation("FavoriteGames", fields: [favoritedById], references: [id])
+  favoritedById String?
 }
 
 model GameRating {
   id     String @id @unique @default(uuid()) @map("_id")
+  rating Float
+
+  user   User   @relation("GameRatings", fields: [userId], references: [id])
   userId String @default(uuid())
+
+  game   Game   @relation("GameRated", fields: [gameId], references: [id])
   gameId String @default(uuid())
-  user   User   @relation(fields: [userId], references: [id])
-  game   Game   @relation(fields: [gameId], references: [id])
+
+  created DateTime @default(now())
+  updated DateTime @updatedAt
+
+  @@unique([userId, gameId]) //=>> the same user can't rate the same game twice
 }

@@ -6,6 +6,7 @@
 		"build": "nuxi generate",
 		"server": "nuxi build",
 		"start": "node .output/server/index.mjs",
+		"modifySchema": "node prisma/modifySchema",
 		"ionic:build": "yarn build",
 		"ionic:serve": "yarn dev",
 		"generate": "nuxi generate",

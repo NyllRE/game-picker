@@ -26,5 +26,6 @@ export default defineEventHandler(async (event) => {
 		id: user.id,
 		username: user.username,
 		updated: user.updated,
+		role: user.role,
 	};
 });

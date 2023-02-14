@@ -8,6 +8,7 @@ declare module 'nitropack' {
     '/api/auth/logout': Awaited<ReturnType<typeof import('../../server/api/auth/logout.post').default>>
     '/api/auth/login': Awaited<ReturnType<typeof import('../../server/api/auth/login.post').default>>
     '/api/auth/image': Awaited<ReturnType<typeof import('../../server/api/auth/image').default>>
+    '/api/auth/addrole': Awaited<ReturnType<typeof import('../../server/api/auth/addrole.post').default>>
     '/__nuxt_error': Awaited<ReturnType<typeof import('../../node_modules/nuxt/dist/core/runtime/nitro/renderer').default>>
     '/manifest.json': Awaited<ReturnType<typeof import('../../node_modules/@kevinmarrec/nuxt-pwa/dist/runtime/server/manifest').default>>
   }
