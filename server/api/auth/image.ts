@@ -32,7 +32,7 @@ export default defineEventHandler(async (event) => {
 		return sendError(
 			event,
 			createError({
-				statusCode: 500,
+				statusCode: 403,
 				statusMessage: "HACKER!!!!!!!! YOU THOUGHT I WOULDN'T KNOW????",
 			})
 		);

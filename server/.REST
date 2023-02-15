@@ -3,7 +3,7 @@ POST http://localhost:3000/api/auth/register
 content-type: application/json
 
 {
-	"username": "test",
+	"username": "bruhh",
 	"password": "tester123"
 }
 
@@ -13,7 +13,7 @@ POST http://localhost:3000/api/auth/login
 content-type: application/json
 
 {
-	"username": "test",
+	"username": "bruhh",
 	"password": "tester123"
 }
 
@@ -43,6 +43,7 @@ Content-Type: application/json
 ###
 
 POST http://localhost:3000/api/auth/addrole
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQwOTFmZjgyLWQyMTgtNGVjNS04MDU3LTBjZGExOGY3OGMzOCIsImlhdCI6MTY3NjQwMjE1NSwiZXhwIjoxNjc2NDAyNzU1fQ.jMbJn_Y66qPTwC52D3UjDSXl-okzWM6URkeehMd9fy4
 Content-Type: application/json
 
 {

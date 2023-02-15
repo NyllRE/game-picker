@@ -11,7 +11,7 @@ export default defineEventHandler(async (event) => {
 		return sendError(
 			event,
 			createError({
-				statusCode: 400,
+				statusCode: 401,
 				statusMessage: 'no username or password',
 			})
 		);
@@ -25,7 +25,7 @@ export default defineEventHandler(async (event) => {
 	return {
 		id: user.id,
 		username: user.username,
-		updated: user.updated,
-		role: user.role,
+		created: user.created,
+		role: user.roleName,
 	};
 });
