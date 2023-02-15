@@ -49,3 +49,16 @@ Content-Type: application/json
 {
 	"role": "BASIC",
 }
+
+###
+
+GET http://localhost:3000/api/games/list
+
+###
+
+POST http://localhost:3000/api/games/add
+Content-Type: application/json
+
+{
+	"name": "Among Us",
+}
