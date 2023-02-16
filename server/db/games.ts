@@ -26,25 +26,20 @@ export const fetchAndStoreGames = async () => {
 
 		let progress = 0;
 
-		// Loop through each game and fetch its data from the Steam API
+		console.log('now we will try to fetch the list');
+
+		//=>> Loop through each game and fetch its data from the Steam API
 		for (const app of appList) {
 			try {
 				progress++;
+
 				const exists = await prisma.fetched.findFirst({
 					where: {
 						gameid: Number(app.appid),
 					},
 				});
-
 				if (exists != null) {
 					continue;
-				} else {
-					console.log(`${progress} out of ${appList.length} - new`);
-					await prisma.fetched.create({
-						data: {
-							gameid: Number(app.appid),
-						},
-					});
 				}
 
 				const appDetailsResponse = await $fetch(
@@ -52,6 +47,21 @@ export const fetchAndStoreGames = async () => {
 				).catch((err: any) => {
 					return Error(err);
 				});
+
+				//=>> only check if it is fetched after actually fetching
+				if (exists == null) {
+					console.log(
+						`${progress} out of ${appList.length} (%${
+							(progress / appList.length) * 100
+						}) - new`
+					);
+					await prisma.fetched.create({
+						data: {
+							gameid: Number(app.appid),
+						},
+					});
+				}
+
 				const appDetails = appDetailsResponse[app.appid].data;
 				const status: boolean = appDetailsResponse[app.appid].success;
 
@@ -60,9 +70,7 @@ export const fetchAndStoreGames = async () => {
 					console.log('Skipped: ', app.appid);
 					continue;
 				}
-				console.log(
-					`Saving:  ${appDetails.name}\nid:      ${appDetails.steam_appid}`
-				);
+				console.log(`Saving:  ${appDetails.steam_appid} ${appDetails.name}`);
 				const constructedData = {
 					name: appDetails.name,
 					short_description: appDetails.short_description,
