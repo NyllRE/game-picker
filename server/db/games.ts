@@ -28,42 +28,41 @@ export const fetchAndStoreGames = async () => {
 
 		// Loop through each game and fetch its data from the Steam API
 		for (const app of appList) {
-			console.log(`${++progress} out of ${appList.length}`);
-
-			const exists = await prisma.fetched.findFirst({
-				where: {
-					gameid: Number(app.appid),
-				},
-			});
-
-			if (exists != null) {
-				console.log('already fetched');
-				continue;
-			} else {
-				await prisma.fetched.create({
-					data: {
+			try {
+				progress++;
+				const exists = await prisma.fetched.findFirst({
+					where: {
 						gameid: Number(app.appid),
 					},
 				});
-			}
 
-			const appDetailsResponse = await $fetch(
-				`http://store.steampowered.com/api/appdetails?appids=${app.appid}`
-			).catch((err: any) => {
-				return Error(err);
-			});
-			const appDetails = appDetailsResponse[app.appid].data;
-			const status: boolean = appDetailsResponse[app.appid].success;
+				if (exists != null) {
+					continue;
+				} else {
+					console.log(`${progress} out of ${appList.length} - new`);
+					await prisma.fetched.create({
+						data: {
+							gameid: Number(app.appid),
+						},
+					});
+				}
 
-			//=>> check if the game exists
-			if (status == false) {
-				console.log('Skipped: ', app.appid);
-				continue;
-			}
-			console.log(
-				`Saving:  ${appDetails.name}\nid:      ${appDetails.steam_appid}`
-			);
-			try {
+				const appDetailsResponse = await $fetch(
+					`http://store.steampowered.com/api/appdetails?appids=${app.appid}`
+				).catch((err: any) => {
+					return Error(err);
+				});
+				const appDetails = appDetailsResponse[app.appid].data;
+				const status: boolean = appDetailsResponse[app.appid].success;
+
+				//=>> check if the game exists
+				if (status == false) {
+					console.log('Skipped: ', app.appid);
+					continue;
+				}
+				console.log(
+					`Saving:  ${appDetails.name}\nid:      ${appDetails.steam_appid}`
+				);
 				const constructedData = {
 					name: appDetails.name,
 					short_description: appDetails.short_description,
@@ -108,7 +107,8 @@ export const fetchAndStoreGames = async () => {
 					},
 				});
 			} catch (err) {
-				console.error(`Skipped: didn't fill data properly`);
+				console.error(`Skipped: didn't fill data properly: ${err}`);
+				continue;
 			}
 		}
 
