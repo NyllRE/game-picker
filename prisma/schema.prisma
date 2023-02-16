@@ -19,8 +19,7 @@ model User {
   updated       DateTime       @updatedAt
   roleName      String         @default("BASIC")
   role          Role           @relation(fields: [roleName], references: [name])
-  favoriteGames Game[]         @relation("FavoriteGames")
-  GameRatings   GameRating[]   @relation("GameRatings")
+  favoriteGames Game[]
   refreshToken  RefreshToken[]
 }
 
@@ -42,26 +41,35 @@ model RefreshToken {
 //=>> see the last changes, do a relational field for favorite games
 
 model Game {
-  id            String       @id @unique @default(uuid()) @map("_id")
-  name          String       @unique
-  gameId        String       @default(uuid())
-  ratings       GameRating[] @relation("GameRated")
-  favoritedBy   User?        @relation("FavoriteGames", fields: [favoritedById], references: [id])
-  favoritedById String?
+  id                Int         @id @unique @default(autoincrement()) @map("_id")
+  name              String
+  short_description String?
+  header_image      String?
+  website           String?
+  developers        Developer[]
+  publishers        Publisher[]
+  genres            Genre[]
+  favoritedBy       User[]
+  favoritedById     String?
+  rating            Float?
 }
 
-model GameRating {
-  id     String @id @unique @default(uuid()) @map("_id")
-  rating Float
+model Developer {
+  name  String @id @unique
+  games Game[]
+}
 
-  user   User   @relation("GameRatings", fields: [userId], references: [id])
-  userId String @default(uuid())
+model Publisher {
+  name  String @id @unique
+  games Game[]
+}
 
-  game   Game   @relation("GameRated", fields: [gameId], references: [id])
-  gameId String @default(uuid())
+model Genre {
+  genreid Int    @id @unique @map("_id")
+  name    String @unique
+  games   Game[]
+}
 
-  created DateTime @default(now())
-  updated DateTime @updatedAt
-
-  @@unique([userId, gameId]) //=>> the same user can't rate the same game twice
+model Fetched {
+  gameid Int @id @unique @map("_id")
 }

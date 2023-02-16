@@ -2,6 +2,7 @@
 declare module 'nitropack' {
   type Awaited<T> = T extends PromiseLike<infer U> ? Awaited<U> : T
   interface InternalApi {
+    '/api/games/steam': Awaited<ReturnType<typeof import('../../server/api/games/steam.get').default>>
     '/api/games/list': Awaited<ReturnType<typeof import('../../server/api/games/list.get').default>>
     '/api/games/add': Awaited<ReturnType<typeof import('../../server/api/games/add.post').default>>
     '/api/auth/user': Awaited<ReturnType<typeof import('../../server/api/auth/user.get').default>>

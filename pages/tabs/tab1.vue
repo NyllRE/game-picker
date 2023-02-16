@@ -36,8 +36,7 @@ ion-page
     UIModal( v-else-if="!user.imageId" :open="true" title="Choose Image" )
       HomeImageGen
 
-    .center( v-else )
-      h1 Welcome {{ user.name }}!
+    HomeGames( v-else )
 </template>
 
 

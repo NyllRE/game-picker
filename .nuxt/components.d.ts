@@ -3,6 +3,7 @@ declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     'ExploreContainer': typeof import("../components/ExploreContainer.vue")['default']
     'HomeAuth': typeof import("../components/Home/Auth.vue")['default']
+    'HomeGames': typeof import("../components/Home/Games.vue")['default']
     'HomeImageGen': typeof import("../components/Home/ImageGen.vue")['default']
     'UIModal': typeof import("../components/UI/Modal.vue")['default']
     'NuxtWelcome': typeof import("../node_modules/@nuxt/ui-templates/dist/templates/welcome.vue")['default']
@@ -113,6 +114,7 @@ declare module '@vue/runtime-core' {
     'Body': typeof import("../node_modules/nuxt/dist/head/runtime/components")['Body']
     'LazyExploreContainer': typeof import("../components/ExploreContainer.vue")['default']
     'LazyHomeAuth': typeof import("../components/Home/Auth.vue")['default']
+    'LazyHomeGames': typeof import("../components/Home/Games.vue")['default']
     'LazyHomeImageGen': typeof import("../components/Home/ImageGen.vue")['default']
     'LazyUIModal': typeof import("../components/UI/Modal.vue")['default']
     'LazyNuxtWelcome': typeof import("../node_modules/@nuxt/ui-templates/dist/templates/welcome.vue")['default']
@@ -226,6 +228,7 @@ declare module '@vue/runtime-core' {
 
 export const ExploreContainer: typeof import("../components/ExploreContainer.vue")['default']
 export const HomeAuth: typeof import("../components/Home/Auth.vue")['default']
+export const HomeGames: typeof import("../components/Home/Games.vue")['default']
 export const HomeImageGen: typeof import("../components/Home/ImageGen.vue")['default']
 export const UIModal: typeof import("../components/UI/Modal.vue")['default']
 export const NuxtWelcome: typeof import("../node_modules/@nuxt/ui-templates/dist/templates/welcome.vue")['default']
@@ -336,6 +339,7 @@ export const Html: typeof import("../node_modules/nuxt/dist/head/runtime/compone
 export const Body: typeof import("../node_modules/nuxt/dist/head/runtime/components")['Body']
 export const LazyExploreContainer: typeof import("../components/ExploreContainer.vue")['default']
 export const LazyHomeAuth: typeof import("../components/Home/Auth.vue")['default']
+export const LazyHomeGames: typeof import("../components/Home/Games.vue")['default']
 export const LazyHomeImageGen: typeof import("../components/Home/ImageGen.vue")['default']
 export const LazyUIModal: typeof import("../components/UI/Modal.vue")['default']
 export const LazyNuxtWelcome: typeof import("../node_modules/@nuxt/ui-templates/dist/templates/welcome.vue")['default']

@@ -1430,6 +1430,7 @@ declare global {
   const useError: typeof import('../../node_modules/nuxt/dist/app')['useError']
   const useFetch: typeof import('../../node_modules/nuxt/dist/app')['useFetch']
   const useFetchApi: typeof import('../../composables/useFetchApi')['default']
+  const useGames: typeof import('../../composables/useGames')['default']
   const useHead: typeof import('../../node_modules/nuxt/dist/head/runtime')['useHead']
   const useIonRouter: typeof import('@ionic/vue')['useIonRouter']
   const useKeyboard: typeof import('@ionic/vue')['useKeyboard']
@@ -2889,6 +2890,7 @@ declare module 'vue' {
     readonly useError: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app')['useError']>
     readonly useFetch: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app')['useFetch']>
     readonly useFetchApi: UnwrapRef<typeof import('../../composables/useFetchApi')['default']>
+    readonly useGames: UnwrapRef<typeof import('../../composables/useGames')['default']>
     readonly useHead: UnwrapRef<typeof import('../../node_modules/nuxt/dist/head/runtime')['useHead']>
     readonly useIonRouter: UnwrapRef<typeof import('@ionic/vue')['useIonRouter']>
     readonly useKeyboard: UnwrapRef<typeof import('@ionic/vue')['useKeyboard']>

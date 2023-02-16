@@ -60,5 +60,10 @@ POST http://localhost:3000/api/games/add
 Content-Type: application/json
 
 {
-	"name": "Among Us",
+	"name": "Among Us"
 }
+
+
+###
+
+GET http://localhost:3000/api/games/steam

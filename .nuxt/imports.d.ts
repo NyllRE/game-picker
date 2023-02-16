@@ -9,6 +9,7 @@ export { default as useAlert } from '../composables/useAlert';
 export { default as useAuth } from '../composables/useAuth';
 export { default as useAvatar } from '../composables/useAvatar';
 export { default as useFetchApi } from '../composables/useFetchApi';
+export { default as useGames } from '../composables/useGames';
 export { usePhotoGallery } from '../composables/usePhotoGallery';
 export { usePWAIcon } from '../node_modules/@kevinmarrec/nuxt-pwa/dist/runtime/composables/usePWAIcon';
 export { definePageMeta } from '../node_modules/nuxt/dist/pages/runtime/composables';
