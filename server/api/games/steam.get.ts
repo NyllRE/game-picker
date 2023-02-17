@@ -9,7 +9,7 @@ export default defineEventHandler(async (event) => {
 	// const user = event.context.auth?.user;
 
 	console.log('attempting to fetch games');
-	const fetchedGames = await fetchAndStoreGamesFaster();
+	const fetchedGames = await fetchAndStoreGamesFaster(5);
 
 	return fetchedGames;
 });

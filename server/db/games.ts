@@ -15,6 +15,14 @@ export const addGame = async (game: any) => {
 	});
 };
 
+function remFromArray(arr: number[], num: any) {
+	const index = arr.indexOf(num);
+	if (index !== -1) {
+		arr.splice(index, 1);
+	}
+	return arr;
+}
+
 export const fetchAndStoreGames = async () => {
 	try {
 		// Fetch all games from the Steam API
@@ -130,7 +138,7 @@ export const fetchAndStoreGames = async () => {
 		await prisma.$disconnect();
 	}
 };
-export const fetchAndStoreGamesFaster = async () => {
+export const fetchAndStoreGamesFaster = async (atOnce: number) => {
 	try {
 		// Fetch all games from the Steam API
 		const appListResponse = await fetch(
@@ -143,21 +151,64 @@ export const fetchAndStoreGamesFaster = async () => {
 
 		console.log('now we will try to fetch the list');
 
-		let appTrigger = []; //=>> we will collect each 10 games at one time
+		/**
+		 * ### These are the ids that we will then clean up
+		 */
+		let appTrigger: number[] = [1326560, 1326590, 1326650]; //=>> we will collect each ${atOnce} games at one time
+		let fetchedGamesCount = 0;
 
+		/**
+		 * ### These urls does not exist in the API, so we need to fetch them
+		 */
+		let urls: string[] = [];
 		//=>> Loop through each game and fetch its data from the Steam API
 		for (const app of appList) {
-			if (appTrigger.length < 10) {
+			if (appTrigger.length < atOnce) {
 				appTrigger.push(app.appid);
 			} else {
-				const urls = appTrigger.map(
-					(appid) =>
-						`http://store.steampowered.com/api/appdetails?appids=${appid}`
-				); //=>> join the array into a comma separated string
+				//=>> create the batch of urls to fetch
+				for (const idx in appTrigger) {
+					progress++;
+					//=>> we have to check if we already fetched this game
+					const exists = await prisma.fetched.findFirst({
+						where: {
+							gameid: Number(app.appid),
+						},
+					});
+					if (exists != null) {
+						appTrigger = remFromArray(appTrigger, appTrigger[idx]);
+						continue;
+					}
+
+					//==<< if we did not fetch this game before, we will add it to the database >>==//
+					urls.push(
+						`http://store.steampowered.com/api/appdetails?appids=${appTrigger[idx]}`
+					);
+
+					fetchedGamesCount++;
+					console.log(
+						`${progress} out of ${appList.length} (%${String(
+							(progress / appList.length) * 100
+						).slice(0, 4)}) - new`
+					);
+
+					//! we will add them to the database later
+					// await prisma.fetched.create({
+					// 	data: {
+					// 		gameid: Number(app.appid),
+					// 	},
+					// });
+				}
+				// appTrigger = urls.length < 10 ? [] : appTrigger; //=>> Reset the array if it's 10 or greater
+				if (urls.length <= atOnce) continue;
+				console.log(fetchedGamesCount, urls);
+
+				console.log(`just got ${urls.length} urls\n`);
+
 				const promises = urls.map((url) =>
 					fetch(url).then((response) => response.json())
 				);
-				Promise.all(promises)
+				const data = await Promise.all(promises)
 					.then((data) => {
 						// data will be an array containing the JSON data from each URL
 						return data;
@@ -166,7 +217,7 @@ export const fetchAndStoreGamesFaster = async () => {
 						return error;
 					});
 
-				appTrigger = []; //=>> Reset the array
+				return data;
 				// return appDetailsResponse;
 
 				// const appDetails = appDetailsResponse[app.appid].data;
@@ -180,4 +231,3 @@ export const fetchAndStoreGamesFaster = async () => {
 		await prisma.$disconnect();
 	}
 };
-
