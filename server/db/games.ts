@@ -130,3 +130,54 @@ export const fetchAndStoreGames = async () => {
 		await prisma.$disconnect();
 	}
 };
+export const fetchAndStoreGamesFaster = async () => {
+	try {
+		// Fetch all games from the Steam API
+		const appListResponse = await fetch(
+			'http://api.steampowered.com/ISteamApps/GetAppList/v0002/'
+		);
+		const appListJson = await appListResponse.json();
+		const appList = appListJson.applist.apps;
+
+		let progress = 0;
+
+		console.log('now we will try to fetch the list');
+
+		let appTrigger = []; //=>> we will collect each 10 games at one time
+
+		//=>> Loop through each game and fetch its data from the Steam API
+		for (const app of appList) {
+			if (appTrigger.length < 10) {
+				appTrigger.push(app.appid);
+			} else {
+				const urls = appTrigger.map(
+					(appid) =>
+						`http://store.steampowered.com/api/appdetails?appids=${appid}`
+				); //=>> join the array into a comma separated string
+				const promises = urls.map((url) =>
+					fetch(url).then((response) => response.json())
+				);
+				Promise.all(promises)
+					.then((data) => {
+						// data will be an array containing the JSON data from each URL
+						return data;
+					})
+					.catch((error) => {
+						return error;
+					});
+
+				appTrigger = []; //=>> Reset the array
+				// return appDetailsResponse;
+
+				// const appDetails = appDetailsResponse[app.appid].data;
+				// const status: boolean = appDetailsResponse[app.appid].success;
+			}
+		}
+	} catch (error) {
+		console.error(error);
+		return error;
+	} finally {
+		await prisma.$disconnect();
+	}
+};
+
