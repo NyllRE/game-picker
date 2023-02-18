@@ -284,9 +284,8 @@ export const fetchAndStoreGamesFaster = async (atOnce: number) => {
 					fetch(url)
 						.then((response): {} => response.json())
 						.then(async (app: any) => {
-							// console.log(JSON.stringify(app));
 							const entries = Object.entries(app);
-							const [steam_appid, appData] = entries[0];
+							const [steam_appid, appData]: any[] = entries[0];
 							const appDetails = appData.data;
 
 							const status: boolean = appData.success;
@@ -308,59 +307,35 @@ export const fetchAndStoreGamesFaster = async (atOnce: number) => {
 							// return app;
 						})
 				);
-				const data = await Promise.all(promises)
-					.then(async (data: object[]) => {
+				const data = await Promise.all(promises).then(
+					async (data: object[]) => {
 						// //=>> data will be an array containing the JSON data from each URL
 
-						for (let game in data) {
+						let game: any;
+						for (game in data) {
 							game = data[game];
+							if (!game.id) continue;
 							console.log(game.id);
 
-							console.dir(game);
+							const fetched = await prisma.fetched.findFirst({
+								where: {
+									gameid: Number(game.id),
+								},
+							});
 
-							const fetched = await prisma.fetched.create({
+							console.log(JSON.stringify(fetched));
+							if (fetched != null) continue;
+
+							await prisma.fetched.create({
 								data: {
 									gameid: Number(game.id),
 								},
 							});
-							console.dir(fetched);
 						}
-						// let completedData = []; //=> only for response purposes
 
-						// let appDetailsResponse: any;
-						// for (appDetailsResponse in data) {
-						// 	appDetailsResponse = data[appDetailsResponse];
-
-						// 	let app: { data: object; success: boolean } | number | any;
-						// 	for (app in appDetailsResponse) {
-						// 		app = appDetailsResponse[app];
-
-						// 		// console.log(app, appDetailsResponse);
-						// 		const appDetails = app.data;
-						// 		const status: boolean = app.success;
-						// 		const doneStoring = await prisma.fetched.create({
-						// 			data: {
-						// 				gameid: Number(appDetails.steam_appid),
-						// 			},
-						// 		});
-						// 		console.log('done storing: ', doneStoring);
-						// 		try {
-						// 			//=>> the saveGame function saves it, we put it to the completedData array just for a response
-						// 			if (!status) continue; //=> skipping if fetching failed
-						// 			completedData.push(
-						// 				await saveGame(appDetails).catch((error) => error)
-						// 			);
-						// 		} catch (e) {
-						// 			console.error('data was incomplete');
-						// 		}
-						// 	}
-						// }
 						return data;
-					})
-					.catch((error) => {
-						return error;
-					});
-
+					}
+				);
 				return data;
 			}
 		}
