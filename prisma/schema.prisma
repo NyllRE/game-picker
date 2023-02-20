@@ -38,7 +38,7 @@ model RefreshToken {
   updated DateTime @updatedAt
 }
 
-//=>> see the last changes, do a relational field for favorite games
+//==<< Game Models >>==//
 
 model Game {
   id                Int         @id @unique @default(autoincrement()) @map("_id")
@@ -49,6 +49,7 @@ model Game {
   developers        Developer[]
   publishers        Publisher[]
   genres            Genre[]
+  categories        Category[]
   favoritedBy       User[]
   favoritedById     String?
   rating            Float?
@@ -68,6 +69,12 @@ model Genre {
   genreid Int    @id @unique @map("_id")
   name    String @unique
   games   Game[]
+}
+
+model Category {
+  categoryid Int    @id @unique @map("_id")
+  name       String @unique
+  games      Game[]
 }
 
 model Fetched {

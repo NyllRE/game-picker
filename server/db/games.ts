@@ -73,6 +73,19 @@ const saveGame = async (appDetails: any) => {
 					  )
 					: undefined,
 			},
+			categories: {
+				connectOrCreate: appDetails.categories.map(
+					(category: { id: number; description: string }) => ({
+						where: {
+							categoryid: category.id,
+						},
+						create: {
+							categoryid: category.id,
+							name: category.description,
+						},
+					})
+				),
+			},
 			rating: appDetails.metacritic
 				? appDetails.metacritic.score / 100
 				: undefined,
@@ -177,17 +190,35 @@ export const fetchAndStoreGames = async () => {
 							})
 						),
 					},
+					categories: {
+						connectOrCreate: appDetails.categories.map(
+							(category: { id: number; description: string }) => ({
+								where: {
+									categoryid: category.id,
+								},
+								create: {
+									categoryid: category.id,
+									name: category.description,
+								},
+							})
+						),
+					},
 					rating: appDetails.metacritic
 						? appDetails.metacritic.score / 100
 						: null,
 				};
+				console.log(constructedData);
+
 				//=>> Store the game in the Prisma database
-				await prisma.game.upsert({
+				return await prisma.game.upsert({
 					where: { id: appDetails.steam_appid },
 					update: constructedData,
 					create: {
 						id: appDetails.steam_appid,
 						...constructedData,
+						categories: {
+							connectOrCreate: appDetails.categories.map(),
+						},
 					},
 				});
 			} catch (err) {
@@ -197,8 +228,6 @@ export const fetchAndStoreGames = async () => {
 		}
 
 		console.log('Finished fetching and storing games');
-
-		return await getAllGames();
 	} catch (error) {
 		console.error(error);
 		return error;
@@ -259,7 +288,7 @@ export const fetchAndStoreGamesFaster = async (atOnce: number) => {
 						continue;
 					}
 
-					//==<< if we did not fetch this game before, we will add it to the database >>==//
+					//=>> if we did not fetch this game before, we will add it to the database
 					urls.push(
 						`http://store.steampowered.com/api/appdetails?appids=${appTrigger[idx]}`
 					);
@@ -270,10 +299,8 @@ export const fetchAndStoreGamesFaster = async (atOnce: number) => {
 							4
 						)}) ${progress}/${appList.length} ${appTrigger[idx]}`
 					);
-
-					//! we will add them to the database later
 				}
-				// appTrigger = urls.length < 10 ? [] : appTrigger; //=>> Reset the array if it's 10 or greater
+				appTrigger = urls.length < atOnce ? [] : appTrigger; //=>> Reset the array if it's ${atOnce} or greater
 				if (urls.length < atOnce) {
 					continue;
 				}
@@ -284,20 +311,19 @@ export const fetchAndStoreGamesFaster = async (atOnce: number) => {
 					fetch(url)
 						.then((response): {} => response.json())
 						.then(async (app: any) => {
+							if (app == null) return new InconclusiveError('Limited requests');
 							const entries = Object.entries(app);
 							const [steam_appid, appData]: any[] = entries[0];
 							const appDetails = appData.data;
 
 							const status: boolean = appData.success;
 							try {
-								console.log(steam_appid, status);
 								//=>> the saveGame function saves it, we put it to the completedData array just for a response
 								if (!status) return status; //=> skipping if fetching failed
 								const game = await saveGame({
 									steam_appid,
 									...appDetails,
 								}).catch((error) => error.message);
-								console.log(`is the error here: ${JSON.stringify(game.id)}`);
 
 								return game;
 							} catch (e) {
@@ -309,13 +335,12 @@ export const fetchAndStoreGamesFaster = async (atOnce: number) => {
 				);
 				const data = await Promise.all(promises).then(
 					async (data: object[]) => {
-						// //=>> data will be an array containing the JSON data from each URL
+						//=>> data will be an array containing the JSON data from each URL
 
 						let game: any;
 						for (game in data) {
 							game = data[game];
 							if (!game.id) continue;
-							console.log(game.id);
 
 							const fetched = await prisma.fetched.findFirst({
 								where: {
@@ -323,7 +348,6 @@ export const fetchAndStoreGamesFaster = async (atOnce: number) => {
 								},
 							});
 
-							console.log(JSON.stringify(fetched));
 							if (fetched != null) continue;
 
 							await prisma.fetched.create({
