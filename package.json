@@ -19,7 +19,7 @@
 		"@types/bcryptjs": "^2.4.2",
 		"@vue/compiler-sfc": "^3.2.47",
 		"nuxi": "^3.0.0",
-		"nuxt": "^3.0.0",
+		"nuxt": "^3.4.3",
 		"prisma": "^4.9.0"
 	},
 	"dependencies": {
